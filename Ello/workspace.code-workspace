@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "..\\..\\fsharp_godot\\GodotFsBasic"
+		}
+	],
+	"settings": {}
+}

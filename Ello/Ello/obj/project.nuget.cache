@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "wH8VgctNCH3JI3mWacAxWHlCEFaGhS9G2218FrX49HmaR2ZxNPUNrjPLFbxDYqFNkf6CTmD2r2a5sJ0mGAHsMQ==",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\terra\\.nuget\\packages\\fsharp.core\\5.0.0\\fsharp.core.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

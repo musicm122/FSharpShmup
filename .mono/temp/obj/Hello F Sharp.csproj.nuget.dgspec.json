@@ -1,0 +1,93 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Projects\\godot\\HelloFSharp\\Hello F Sharp.csproj": {}
+  },
+  "projects": {
+    "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj",
+        "projectName": "Ello",
+        "projectPath": "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj",
+        "packagesPath": "C:\\Users\\terra\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\terra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "dependencies": {
+            "FSharp.Core": {
+              "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[5.0.0, )",
+              "generatePathProperty": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Projects\\godot\\HelloFSharp\\Hello F Sharp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Projects\\godot\\HelloFSharp\\Hello F Sharp.csproj",
+        "projectName": "Hello F Sharp",
+        "projectPath": "C:\\Projects\\godot\\HelloFSharp\\Hello F Sharp.csproj",
+        "packagesPath": "C:\\Users\\terra\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\godot\\HelloFSharp\\.mono\\temp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\terra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {
+              "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj": {
+                "projectPath": "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\Hello F Sharp.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\Hello F Sharp.pdb
+C:\Projects\godot\HelloFSharp\.mono\temp\obj\Debug\Hello F Sharp.csproj.AssemblyReference.cache
+C:\Projects\godot\HelloFSharp\.mono\temp\obj\Debug\Hello F Sharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\godot\HelloFSharp\.mono\temp\obj\Debug\Hello F Sharp.AssemblyInfoInputs.cache
+C:\Projects\godot\HelloFSharp\.mono\temp\obj\Debug\Hello F Sharp.AssemblyInfo.cs
+C:\Projects\godot\HelloFSharp\.mono\temp\obj\Debug\Hello F Sharp.csproj.CoreCompileInputs.cache
+C:\Projects\godot\HelloFSharp\.mono\temp\obj\Debug\Hello F Sharp.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\obj\Debug\Hello F Sharp.pdb
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\FSharp.Core.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\cs\FSharp.Core.resources.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\de\FSharp.Core.resources.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\es\FSharp.Core.resources.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\fr\FSharp.Core.resources.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\it\FSharp.Core.resources.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\ja\FSharp.Core.resources.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\ko\FSharp.Core.resources.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\pl\FSharp.Core.resources.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\pt-BR\FSharp.Core.resources.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\ru\FSharp.Core.resources.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\tr\FSharp.Core.resources.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\zh-Hans\FSharp.Core.resources.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\zh-Hant\FSharp.Core.resources.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\Ello.dll
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\Ello.pdb
+C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\Ello.xml
+C:\Projects\godot\HelloFSharp\.mono\temp\obj\Debug\Hello F Sharp.csproj.CopyComplete
