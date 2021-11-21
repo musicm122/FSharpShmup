@@ -18,9 +18,6 @@ type PlayerFs() =
     [<Export(PropertyHint.File, "*.tscn")>]
     member val BulletPath: string = "res://bullet.tscn" with get, set
 
-    //[<Export>]
-    //member val MuzzlePath: string = "Muzzle" with get, set
-
     [<Export>]
     member val CooldownTime: float32 = 2f with get, set
 
@@ -38,7 +35,9 @@ type PlayerFs() =
         let bulletInstance = this.InstantiateBullet this.BulletPath
         this.AddChild(bulletInstance)
         let muzzle = this.GetNode<Position2D>("Muzzle")
+        bulletInstance.SetAsToplevel(true)
         bulletInstance.GlobalPosition <- muzzle.GlobalPosition
+        bulletInstance.Velocity <- Vector2.Up
 
     member this.GetHealth() = this.Hp
 
@@ -64,12 +63,11 @@ type PlayerFs() =
 
         new Vector2(x, y)
 
-    member this.ShootCheck() : bool = Input.IsActionPressed("shoot")
+    member this.ShootCheck() : bool = Input.IsActionJustPressed("shoot")
 
     override this._PhysicsProcess(delta) =
         let mutable currentVelocity = Vector2.Zero
         currentVelocity <- this.GetInputMovemet(currentVelocity)
         this.MoveAndSlide(currentVelocity) |> ignore
 
-        if Input.IsActionJustPressed("shoot") then
-            this.Shoot()
+        if this.ShootCheck() then this.Shoot()
