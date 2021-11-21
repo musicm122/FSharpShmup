@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="GDUtils.fs" />
+    <Compile Include="Interfaces.fs" />
+    <Compile Include="BulletFs.fs" />
     <Compile Include="PlayerFs.fs" />
     <Compile Include="MainFs.fs" />
     <None Include="Script.fsx" />
@@ -14,10 +17,10 @@
 
   <ItemGroup>
     <Reference Include="GodotSharp">
-      <HintPath>..\..\..\fsharp_godot\GodotFsBasic\.mono\assemblies\Debug\GodotSharp.dll</HintPath>
+      <HintPath>..\..\.mono\assemblies\Debug\GodotSharp.dll</HintPath>
     </Reference>
     <Reference Include="GodotSharpEditor">
-      <HintPath>..\..\..\fsharp_godot\GodotFsBasic\.mono\assemblies\Debug\GodotSharpEditor.dll</HintPath>
+      <HintPath>..\..\.mono\assemblies\Debug\GodotSharpEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

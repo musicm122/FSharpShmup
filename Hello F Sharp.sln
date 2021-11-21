@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hello F Sharp", "Hello F Sharp.csproj", "{EDCB1BBC-B453-4FE5-A421-38688970B2E7}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Ello", "Ello\Ello\Ello.fsproj", "{010C96A1-BD6A-47D0-AE4A-E1E14C21B2BC}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Ello", "Ello\Ello\Ello.fsproj", "{010C96A1-BD6A-47D0-AE4A-E1E14C21B2BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

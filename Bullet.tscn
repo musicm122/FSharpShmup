@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Bullet.cs" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.0
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource( 1 )
+Speed = 200.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 1, 0, 0.890196, 1 )
+polygon = PoolVector2Array( 0, -10, -10, 0, 0, 10, 10, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="body_shape_entered" from="." to="." method="OnBulletBodyShapeEntered"]

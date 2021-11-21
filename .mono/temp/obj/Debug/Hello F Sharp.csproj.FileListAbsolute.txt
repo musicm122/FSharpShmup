@@ -25,3 +25,30 @@ C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\Ello.dll
 C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\Ello.pdb
 C:\Projects\godot\HelloFSharp\.mono\temp\bin\Debug\Ello.xml
 C:\Projects\godot\HelloFSharp\.mono\temp\obj\Debug\Hello F Sharp.csproj.CopyComplete
+x:\Projects\Godot\FSharpShmup\.mono\temp\obj\Debug\Hello F Sharp.dll
+x:\Projects\Godot\FSharpShmup\.mono\temp\obj\Debug\Hello F Sharp.pdb
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\Hello F Sharp.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\Hello F Sharp.pdb
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\FSharp.Core.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\cs\FSharp.Core.resources.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\de\FSharp.Core.resources.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\es\FSharp.Core.resources.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\fr\FSharp.Core.resources.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\it\FSharp.Core.resources.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\ja\FSharp.Core.resources.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\ko\FSharp.Core.resources.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\pl\FSharp.Core.resources.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\pt-BR\FSharp.Core.resources.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\ru\FSharp.Core.resources.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\tr\FSharp.Core.resources.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\zh-Hans\FSharp.Core.resources.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\zh-Hant\FSharp.Core.resources.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\Ello.dll
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\Ello.pdb
+X:\Projects\Godot\FSharpShmup\.mono\temp\bin\Debug\Ello.xml
+X:\Projects\Godot\FSharpShmup\.mono\temp\obj\Debug\Hello F Sharp.csproj.AssemblyReference.cache
+X:\Projects\Godot\FSharpShmup\.mono\temp\obj\Debug\Hello F Sharp.GeneratedMSBuildEditorConfig.editorconfig
+X:\Projects\Godot\FSharpShmup\.mono\temp\obj\Debug\Hello F Sharp.AssemblyInfoInputs.cache
+X:\Projects\Godot\FSharpShmup\.mono\temp\obj\Debug\Hello F Sharp.AssemblyInfo.cs
+X:\Projects\Godot\FSharpShmup\.mono\temp\obj\Debug\Hello F Sharp.csproj.CoreCompileInputs.cache
+X:\Projects\Godot\FSharpShmup\.mono\temp\obj\Debug\Hello F Sharp.csproj.CopyComplete

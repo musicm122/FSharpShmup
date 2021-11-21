@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "010c96a1-bd6a-47d0-ae4a-e1e14c21b2bc": {
+      "ProjectGuid": "010c96a1-bd6a-47d0-ae4a-e1e14c21b2bc",
+      "DisplayName": "Ello",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

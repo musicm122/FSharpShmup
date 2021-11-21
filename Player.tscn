@@ -4,14 +4,22 @@
 [ext_resource path="res://Art/Space Shooter Pack/PNG/playerShip1_green.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 17 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+Speed = 400.0
+
+[node name="Muzzle" type="Position2D" parent="."]
+position = Vector2( 0, -50 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 7 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+[node name="Camera2D" type="Camera2D" parent="CollisionShape2D"]
+position = Vector2( 0, -47 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Sprite" type="Sprite" parent="CollisionShape2D"]
+position = Vector2( 0, -7 )
+texture = ExtResource( 2 )
