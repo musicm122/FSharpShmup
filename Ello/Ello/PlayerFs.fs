@@ -16,14 +16,19 @@ type PlayerFs() =
     member val Hp: int = 100 with get, set
 
     [<Export(PropertyHint.File, "*.tscn")>]
-    member val BulletPath: string = "res://bullet.tscn" with get, set
+    member val BulletPath: string = Constants.BulletPath with get, set
 
     [<Export>]
     member val CooldownTime: float32 = 2f with get, set
 
     member this.OnBulletCollision(body: PhysicsBody2D, attackPower) =
-        if body.Name = "Player" then
-            this.TakeDamage(attackPower)
+        GD.Print("Hit "+body.Name)
+        match body.Name with
+        | "Player" -> this.TakeDamage(attackPower)
+        | "Enemy" ->
+            let e = body:?> EnemyFs
+            e.TakeDamage(attackPower)
+        | _ -> GD.Print("Hit something else")
 
     member this.InstantiateBullet scenePath =
         let bulletType = GD.Load<PackedScene>(scenePath)
@@ -34,7 +39,7 @@ type PlayerFs() =
     member this.Shoot() =
         let bulletInstance = this.InstantiateBullet this.BulletPath
         this.AddChild(bulletInstance)
-        let muzzle = this.GetNode<Position2D>("Muzzle")
+        let muzzle = this.GetNode<Position2D>(new NodePath("Muzzle"))
         bulletInstance.SetAsToplevel(true)
         bulletInstance.GlobalPosition <- muzzle.GlobalPosition
         bulletInstance.Velocity <- Vector2.Up
@@ -51,23 +56,22 @@ type PlayerFs() =
         let mutable x = 0f
         let mutable y = 0f
 
-        if Input.IsActionPressed("right") then
+        if Input.IsActionPressed(InputAction.Right) then
             x <- currentVelocity.x + this.Speed
-        elif Input.IsActionPressed("left") then
+        elif Input.IsActionPressed(InputAction.Left) then
             x <- currentVelocity.x - this.Speed
 
-        if Input.IsActionPressed("up") then
+        if Input.IsActionPressed(InputAction.Up) then
             y <- currentVelocity.y - this.Speed
-        elif Input.IsActionPressed("down") then
+        elif Input.IsActionPressed(InputAction.Left) then
             y <- currentVelocity.y + this.Speed
 
         new Vector2(x, y)
 
-    member this.ShootCheck() : bool = Input.IsActionJustPressed("shoot")
+    member this.ShootCheck() : bool = Input.IsActionJustPressed(InputAction.Shoot)
 
     override this._PhysicsProcess(delta) =
         let mutable currentVelocity = Vector2.Zero
         currentVelocity <- this.GetInputMovemet(currentVelocity)
         this.MoveAndSlide(currentVelocity) |> ignore
-
         if this.ShootCheck() then this.Shoot()

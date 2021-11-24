@@ -1,2 +1,2 @@
-﻿53388
-X:/apps/Godot_v3.4-stable_mono_win64/Godot_v3.4-stable_mono_win64.exe
+﻿64860
+C:/Apps/Godot_v3.4-stable_mono_win64/Godot_v3.4-stable_mono_win64.exe

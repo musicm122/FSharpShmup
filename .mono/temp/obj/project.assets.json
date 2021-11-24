@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.7.2": {
-      "FSharp.Core/6.0.1": {
+      "FSharp.Core/5.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/FSharp.Core.dll": {}
@@ -50,20 +50,13 @@
           "lib/netstandard2.0/zh-Hant/FSharp.Core.resources.dll": {
             "locale": "zh-Hant"
           }
-        },
-        "contentFiles": {
-          "contentFiles/any/any/_._": {
-            "buildAction": "None",
-            "codeLanguage": "any",
-            "copyToOutput": false
-          }
         }
       },
       "Ello/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.7.2",
         "dependencies": {
-          "FSharp.Core": "6.0.1"
+          "FSharp.Core": "5.0.0"
         },
         "compile": {
           "bin/placeholder/Ello.dll": {}
@@ -75,17 +68,15 @@
     }
   },
   "libraries": {
-    "FSharp.Core/6.0.1": {
-      "sha512": "VrFAiW8dEEekk+0aqlbvMNZzDvYXmgWZwAt68AUBqaWK8RnoEVUNglj66bZzhs4/U63q0EfXlhcEKnH1sTYLjw==",
+    "FSharp.Core/5.0.0": {
+      "sha512": "iHoYXA0VaSQUONGENB1aVafjDDZDZpwu39MtaRCTrmwFW/cTcK0b2yKNVYneFHJMc3ChtsSoM9lNtJ1dYXkHfA==",
       "type": "package",
-      "path": "fsharp.core/6.0.1",
+      "path": "fsharp.core/5.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
-        "contentFiles/any/netstandard2.0/FSharp.Core.xml",
-        "contentFiles/any/netstandard2.1/FSharp.Core.xml",
-        "fsharp.core.6.0.1.nupkg.sha512",
+        "fsharp.core.5.0.0.nupkg.sha512",
         "fsharp.core.nuspec",
         "lib/netstandard2.0/FSharp.Core.dll",
         "lib/netstandard2.0/FSharp.Core.xml",
@@ -101,22 +92,7 @@
         "lib/netstandard2.0/ru/FSharp.Core.resources.dll",
         "lib/netstandard2.0/tr/FSharp.Core.resources.dll",
         "lib/netstandard2.0/zh-Hans/FSharp.Core.resources.dll",
-        "lib/netstandard2.0/zh-Hant/FSharp.Core.resources.dll",
-        "lib/netstandard2.1/FSharp.Core.dll",
-        "lib/netstandard2.1/FSharp.Core.xml",
-        "lib/netstandard2.1/cs/FSharp.Core.resources.dll",
-        "lib/netstandard2.1/de/FSharp.Core.resources.dll",
-        "lib/netstandard2.1/es/FSharp.Core.resources.dll",
-        "lib/netstandard2.1/fr/FSharp.Core.resources.dll",
-        "lib/netstandard2.1/it/FSharp.Core.resources.dll",
-        "lib/netstandard2.1/ja/FSharp.Core.resources.dll",
-        "lib/netstandard2.1/ko/FSharp.Core.resources.dll",
-        "lib/netstandard2.1/pl/FSharp.Core.resources.dll",
-        "lib/netstandard2.1/pt-BR/FSharp.Core.resources.dll",
-        "lib/netstandard2.1/ru/FSharp.Core.resources.dll",
-        "lib/netstandard2.1/tr/FSharp.Core.resources.dll",
-        "lib/netstandard2.1/zh-Hans/FSharp.Core.resources.dll",
-        "lib/netstandard2.1/zh-Hant/FSharp.Core.resources.dll"
+        "lib/netstandard2.0/zh-Hant/FSharp.Core.resources.dll"
       ]
     },
     "Ello/1.0.0": {
@@ -136,11 +112,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "x:\\Projects\\Godot\\FSharpShmup\\Hello F Sharp.csproj",
+      "projectUniqueName": "C:\\Projects\\godot\\HelloFSharp\\Hello F Sharp.csproj",
       "projectName": "Hello F Sharp",
-      "projectPath": "x:\\Projects\\Godot\\FSharpShmup\\Hello F Sharp.csproj",
+      "projectPath": "C:\\Projects\\godot\\HelloFSharp\\Hello F Sharp.csproj",
       "packagesPath": "C:\\Users\\terra\\.nuget\\packages\\",
-      "outputPath": "x:\\Projects\\Godot\\FSharpShmup\\.mono\\temp\\obj\\",
+      "outputPath": "C:\\Projects\\godot\\HelloFSharp\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\terra\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -157,8 +133,8 @@
         "net472": {
           "targetAlias": "net472",
           "projectReferences": {
-            "x:\\Projects\\Godot\\FSharpShmup\\Ello\\Ello\\Ello.fsproj": {
-              "projectPath": "x:\\Projects\\Godot\\FSharpShmup\\Ello\\Ello\\Ello.fsproj"
+            "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj": {
+              "projectPath": "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj"
             }
           }
         }
@@ -172,7 +148,7 @@
     "frameworks": {
       "net472": {
         "targetAlias": "net472",
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

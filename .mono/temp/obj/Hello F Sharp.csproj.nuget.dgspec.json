@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "x:\\Projects\\Godot\\FSharpShmup\\Hello F Sharp.csproj": {}
+    "C:\\Projects\\godot\\HelloFSharp\\Hello F Sharp.csproj": {}
   },
   "projects": {
-    "x:\\Projects\\Godot\\FSharpShmup\\Ello\\Ello\\Ello.fsproj": {
+    "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "x:\\Projects\\Godot\\FSharpShmup\\Ello\\Ello\\Ello.fsproj",
+        "projectUniqueName": "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj",
         "projectName": "Ello",
-        "projectPath": "x:\\Projects\\Godot\\FSharpShmup\\Ello\\Ello\\Ello.fsproj",
+        "projectPath": "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj",
         "packagesPath": "C:\\Users\\terra\\.nuget\\packages\\",
-        "outputPath": "x:\\Projects\\Godot\\FSharpShmup\\Ello\\Ello\\obj\\",
+        "outputPath": "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\terra\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -38,22 +38,22 @@
             "FSharp.Core": {
               "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
               "target": "Package",
-              "version": "[6.0.1, )",
+              "version": "[5.0.0, )",
               "generatePathProperty": true
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "x:\\Projects\\Godot\\FSharpShmup\\Hello F Sharp.csproj": {
+    "C:\\Projects\\godot\\HelloFSharp\\Hello F Sharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "x:\\Projects\\Godot\\FSharpShmup\\Hello F Sharp.csproj",
+        "projectUniqueName": "C:\\Projects\\godot\\HelloFSharp\\Hello F Sharp.csproj",
         "projectName": "Hello F Sharp",
-        "projectPath": "x:\\Projects\\Godot\\FSharpShmup\\Hello F Sharp.csproj",
+        "projectPath": "C:\\Projects\\godot\\HelloFSharp\\Hello F Sharp.csproj",
         "packagesPath": "C:\\Users\\terra\\.nuget\\packages\\",
-        "outputPath": "x:\\Projects\\Godot\\FSharpShmup\\.mono\\temp\\obj\\",
+        "outputPath": "C:\\Projects\\godot\\HelloFSharp\\.mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\terra\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -70,8 +70,8 @@
           "net472": {
             "targetAlias": "net472",
             "projectReferences": {
-              "x:\\Projects\\Godot\\FSharpShmup\\Ello\\Ello\\Ello.fsproj": {
-                "projectPath": "x:\\Projects\\Godot\\FSharpShmup\\Ello\\Ello\\Ello.fsproj"
+              "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj": {
+                "projectPath": "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj"
               }
             }
           }
@@ -85,7 +85,7 @@
       "frameworks": {
         "net472": {
           "targetAlias": "net472",
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

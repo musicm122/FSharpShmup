@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "qLtJjmQo85UpAv1YCtAtHw7TE4tLNecwidx6Lkn1k2UoT2YzVlmqkjmbyOIC4kPo6X1IU6RJcnB+sAQwmwVsFw==",
+  "dgSpecHash": "wH8VgctNCH3JI3mWacAxWHlCEFaGhS9G2218FrX49HmaR2ZxNPUNrjPLFbxDYqFNkf6CTmD2r2a5sJ0mGAHsMQ==",
   "success": true,
-  "projectFilePath": "x:\\Projects\\Godot\\FSharpShmup\\Ello\\Ello\\Ello.fsproj",
+  "projectFilePath": "C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello\\Ello.fsproj",
   "expectedPackageFiles": [
-    "C:\\Users\\terra\\.nuget\\packages\\fsharp.core\\6.0.1\\fsharp.core.6.0.1.nupkg.sha512"
+    "C:\\Users\\terra\\.nuget\\packages\\fsharp.core\\5.0.0\\fsharp.core.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }
