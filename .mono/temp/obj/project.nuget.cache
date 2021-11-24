@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/oAj82aa+qYfnDsE8UsifZDhlQ9hvYK2P5TqN/2jzexiuIXC0IYMhi3Zs72gCXYvqm2mQlyDM/Mj1vCN/6/UfA==",
+  "dgSpecHash": "yJLbHPGxC4vj4h+Ui/v62OabRUmPG7OWSISp6AtZYZ5A4KPupKaRKpnuCF5Ew0KSrqgCAI1P0Bm0SuV1VLbrXQ==",
   "success": true,
-  "projectFilePath": "X:\\Projects\\Godot\\FSharpShmup\\Hello F Sharp.csproj",
+  "projectFilePath": "x:\\Projects\\Godot\\FSharpShmup\\Hello F Sharp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\terra\\.nuget\\packages\\fsharp.core\\6.0.1\\fsharp.core.6.0.1.nupkg.sha512"
   ],

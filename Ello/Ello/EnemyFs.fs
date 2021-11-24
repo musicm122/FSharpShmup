@@ -1,16 +1,21 @@
 namespace Ello
 
 open Godot
-open Ello.GDUtils
 
-type PlayerFs() =
+type MoveDirection =
+    | Left
+    | Right
+    | Up 
+    | Down
+
+type EnemyFs() =
     inherit KinematicBody2D()
 
     [<Export>]
-    member val RateOfFire = 1f with get, set
+    member val Text = "Hello World!" with get, set
 
-    [<Export>]
-    member val Speed = 100f with get, set
+    override this._Ready() =
+        GD.Print(this.Text)
 
     [<Export>]
     member val Hp: int = 100 with get, set
@@ -21,8 +26,15 @@ type PlayerFs() =
     [<Export>]
     member val CooldownTime: float32 = 2f with get, set
 
+    [<Export>]
+    member val MaxMoveTime = 20f with get, set
+
+    member val CurrentMoveDirection= MoveDirection.Left with get, set
+    
+    member val AccumulatedMoveTime = 0f with get, set
+
     member this.OnBulletCollision(body: PhysicsBody2D, attackPower) =
-        if body.Name = "Player" then
+        if body.Name = "Enemy" then
             this.TakeDamage(attackPower)
 
     member this.InstantiateBullet scenePath =
@@ -45,29 +57,26 @@ type PlayerFs() =
 
     member this.HealDamage amt = this.Hp <- this.Hp + amt
 
-    member this.Die() = GD.Print("You Died")
+    member this.Die() = 
+        this.QueueFree()    
 
-    member this.GetInputMovemet(currentVelocity: Vector2) : Vector2 =
-        let mutable x = 0f
-        let mutable y = 0f
+    member this.ChangeDirection() = 
+        match this.CurrentMoveDirection with 
+        | Left -> Right
+        | Right -> Left
+        | Up -> Down
+        | Down -> Up
 
-        if Input.IsActionPressed("right") then
-            x <- currentVelocity.x + this.Speed
-        elif Input.IsActionPressed("left") then
-            x <- currentVelocity.x - this.Speed
-
-        if Input.IsActionPressed("up") then
-            y <- currentVelocity.y - this.Speed
-        elif Input.IsActionPressed("down") then
-            y <- currentVelocity.y + this.Speed
-
-        new Vector2(x, y)
-
-    member this.ShootCheck() : bool = Input.IsActionJustPressed("shoot")
+    member this.GetVelocityInMoveDirection() =
+        match this.CurrentMoveDirection with 
+        | Left -> this.currentVelocity.x - this.Speed
+        | Right -> this.currentVelocity.x + this.Speed
+        | Up -> this.currentVelocity.y - this.Speed
+        | Down -> this.currentVelocity.y + this.Speed
 
     override this._PhysicsProcess(delta) =
-        let mutable currentVelocity = Vector2.Zero
-        currentVelocity <- this.GetInputMovemet(currentVelocity)
-        this.MoveAndSlide(currentVelocity) |> ignore
-
-        if this.ShootCheck() then this.Shoot()
+        
+        this.AccumulatedMoveTime <- this.AccumulatedMoveTime + delta
+        if this.AccumulatedMoveTime >= this.MaxMoveTime then 
+            this.CurrentMoveDirection <- this.ChangeDirection()
+            this.AccumulatedMoveTime <- 0f

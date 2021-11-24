@@ -136,11 +136,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "X:\\Projects\\Godot\\FSharpShmup\\Hello F Sharp.csproj",
+      "projectUniqueName": "x:\\Projects\\Godot\\FSharpShmup\\Hello F Sharp.csproj",
       "projectName": "Hello F Sharp",
-      "projectPath": "X:\\Projects\\Godot\\FSharpShmup\\Hello F Sharp.csproj",
+      "projectPath": "x:\\Projects\\Godot\\FSharpShmup\\Hello F Sharp.csproj",
       "packagesPath": "C:\\Users\\terra\\.nuget\\packages\\",
-      "outputPath": "X:\\Projects\\Godot\\FSharpShmup\\.mono\\temp\\obj\\",
+      "outputPath": "x:\\Projects\\Godot\\FSharpShmup\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\terra\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -157,8 +157,8 @@
         "net472": {
           "targetAlias": "net472",
           "projectReferences": {
-            "X:\\Projects\\Godot\\FSharpShmup\\Ello\\Ello\\Ello.fsproj": {
-              "projectPath": "X:\\Projects\\Godot\\FSharpShmup\\Ello\\Ello\\Ello.fsproj"
+            "x:\\Projects\\Godot\\FSharpShmup\\Ello\\Ello\\Ello.fsproj": {
+              "projectPath": "x:\\Projects\\Godot\\FSharpShmup\\Ello\\Ello\\Ello.fsproj"
             }
           }
         }
