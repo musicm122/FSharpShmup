@@ -5,7 +5,27 @@
       "ProjectGuid": "010c96a1-bd6a-47d0-ae4a-e1e14c21b2bc",
       "DisplayName": "Ello",
       "ColorIndex": 0
+    },
+    "edcb1bbc-b453-4fe5-a421-38688970b2e7": {
+      "ProjectGuid": "edcb1bbc-b453-4fe5-a421-38688970b2e7",
+      "DisplayName": "Hello F Sharp",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "264453b6-c52f-489b-bf6d-6e2b51e43a6d": {
+      "ProjectGuid": "264453b6-c52f-489b-bf6d-6e2b51e43a6d",
+      "DisplayName": "Hello F Sharp",
+      "ColorIndex": 2
+    },
+    "8696f0ac-33af-435b-aa7d-3c52d55fd83e": {
+      "ProjectGuid": "8696f0ac-33af-435b-aa7d-3c52d55fd83e",
+      "DisplayName": "Ello",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 4
 }

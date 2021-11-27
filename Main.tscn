@@ -14,13 +14,19 @@ Speed = 200.0
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 290, 122 )
 Speed = 50.0
+MaxHp = 3
+CurrentHp = 3
 
 [node name="Enemy2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 474, -20 )
 Speed = 200.0
+MaxHp = 2
+CurrentHp = 2
 CooldownTime = 0.5
 
 [node name="Enemy3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 674, 88 )
 Speed = 100.0
+MaxHp = 1
+CurrentHp = 1
 MaxMoveTime = 2.0

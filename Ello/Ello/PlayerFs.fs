@@ -13,7 +13,10 @@ type PlayerFs() =
     member val Speed = 100f with get, set
 
     [<Export>]
-    member val Hp: int = 100 with get, set
+    member val MaxHp: int = 100 with get, set
+
+    [<Export>]
+    member val CurrentHp: int = 100 with get, set
 
     [<Export(PropertyHint.File, "*.tscn")>]
     member val BulletPath: string = Constants.BulletPath with get, set
@@ -21,12 +24,13 @@ type PlayerFs() =
     [<Export>]
     member val CooldownTime: float32 = 2f with get, set
 
-    member this.OnBulletCollision(body: PhysicsBody2D, attackPower) =
-        GD.Print("Hit "+body.Name)
+    member this.OnBulletCollision(body: Node, attackPower) =
+        GD.Print("Hit " + body.Name)
+
         match body.Name with
         | "Player" -> this.TakeDamage(attackPower)
         | "Enemy" ->
-            let e = body:?> EnemyFs
+            let e = body :?> EnemyFs
             e.TakeDamage(attackPower)
         | _ -> GD.Print("Hit something else")
 
@@ -39,39 +43,53 @@ type PlayerFs() =
     member this.Shoot() =
         let bulletInstance = this.InstantiateBullet this.BulletPath
         this.AddChild(bulletInstance)
-        let muzzle = this.GetNode<Position2D>(new NodePath("Muzzle"))
+
+        let muzzle =
+            this.GetNode<Position2D>(new NodePath("Muzzle"))
+
         bulletInstance.SetAsToplevel(true)
         bulletInstance.GlobalPosition <- muzzle.GlobalPosition
         bulletInstance.Velocity <- Vector2.Up
 
-    member this.GetHealth() = this.Hp
+    member this.GetHealth() = this.CurrentHp
 
-    member this.TakeDamage amt = this.Hp <- this.Hp - amt
+    member this.TakeDamage amt =
+        this.CurrentHp <- Mathf.Clamp((this.CurrentHp + amt), 0, this.MaxHp)
 
-    member this.HealDamage amt = this.Hp <- this.Hp + amt
+    member this.HealDamage amt =
+        this.CurrentHp <- Mathf.Clamp((this.CurrentHp + amt), 0, this.MaxHp)
 
-    member this.Die() = GD.Print("You Died")
+    member this.DeathCheck() = if this.CurrentHp <= 0 then this.Die()
 
-    member this.GetInputMovemet(currentVelocity: Vector2) : Vector2 =
-        let mutable x = 0f
-        let mutable y = 0f
+    member this.Die() =
+        GD.Print("You Died")
+        base.ReloadScene() |> ignore
+
+    member this.GetInputMovement() : Vector2 =
+        let mutable velocity = Vector2()
 
         if Input.IsActionPressed(InputAction.Right) then
-            x <- currentVelocity.x + this.Speed
-        elif Input.IsActionPressed(InputAction.Left) then
-            x <- currentVelocity.x - this.Speed
+            velocity.x <- velocity.x + 1f
+
+        if Input.IsActionPressed(InputAction.Left) then
+            velocity.x <- velocity.x - 1f
 
         if Input.IsActionPressed(InputAction.Up) then
-            y <- currentVelocity.y - this.Speed
-        elif Input.IsActionPressed(InputAction.Left) then
-            y <- currentVelocity.y + this.Speed
+            velocity.y <- velocity.y - 1f
 
-        new Vector2(x, y)
+        if Input.IsActionPressed(InputAction.Down) then
+            velocity.y <- velocity.y + 1f
 
-    member this.ShootCheck() : bool = Input.IsActionJustPressed(InputAction.Shoot)
+        velocity.Normalized() * this.Speed
+
+    member this.ShootCheck() : bool =
+        Input.IsActionJustPressed(InputAction.Shoot)
 
     override this._PhysicsProcess(delta) =
-        let mutable currentVelocity = Vector2.Zero
-        currentVelocity <- this.GetInputMovemet(currentVelocity)
-        this.MoveAndSlide(currentVelocity) |> ignore
         if this.ShootCheck() then this.Shoot()
+        this.DeathCheck()
+
+        ()
+        |> this.GetInputMovement
+        |> this.MoveAndSlide
+        |> ignore

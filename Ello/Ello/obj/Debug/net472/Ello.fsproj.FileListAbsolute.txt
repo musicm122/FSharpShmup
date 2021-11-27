@@ -56,5 +56,5 @@ X:\Projects\Godot\FSharpShmup\Ello\Ello\bin\Debug\net472\GodotSharp.pdb
 X:\Projects\Godot\FSharpShmup\Ello\Ello\bin\Debug\net472\GodotSharp.xml
 X:\Projects\Godot\FSharpShmup\Ello\Ello\bin\Debug\net472\GodotSharpEditor.pdb
 X:\Projects\Godot\FSharpShmup\Ello\Ello\bin\Debug\net472\GodotSharpEditor.xml
-X:\Projects\Godot\FSharpShmup\Ello\Ello\obj\Debug\net472\Ello.fsproj.AssemblyReference.cache
 X:\Projects\Godot\FSharpShmup\Ello\Ello\obj\Debug\net472\Ello.fsproj.CopyComplete
+X:\Projects\Godot\FSharpShmup\Ello\Ello\obj\Debug\net472\Ello.fsproj.AssemblyReference.cache

@@ -17,19 +17,22 @@ type BulletFs() =
 
     [<Export>]
     member val PlayerPath = "res://Player.tscn" with get, set
-    
+
     [<Export>]
     member val TimeToLive = 5f with get, set
 
     member val AccumulatedTime = 0f with get, set
 
     member this.ApplyDamage(target: IHealth) = target.TakeDamage this.AttackPower
-
-    member this.OnBulletBodyShapeEntered(body: PhysicsBody2D) =
+    
+    member this.OnCollision(body: Node) =
+        GD.Print("OnBulletCollision "+body.Name)
         this.OnCollisionFunc(body, this.AttackPower)
         this.QueueFree()
 
     override this._PhysicsProcess(delta) =
         this.Translate(this.Velocity * this.Speed * delta)
         this.AccumulatedTime <- this.AccumulatedTime + delta
-        if this.AccumulatedTime > this.TimeToLive then this.QueueFree()
+
+        if this.AccumulatedTime > this.TimeToLive then
+            this.QueueFree()

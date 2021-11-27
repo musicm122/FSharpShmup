@@ -5,8 +5,7 @@ open Godot
 type EnemyFs() =
     inherit KinematicBody2D()
 
-    [<Export>]
-    member val ShootDirection = Down with get,set
+    member val ShootDirection = Down with get, set
 
     [<Export>]
     member val Speed = 100f with get, set
@@ -15,7 +14,10 @@ type EnemyFs() =
     member val CurrentVelocity = Vector2.Zero with get, set
 
     [<Export>]
-    member val Hp: int = 100 with get, set
+    member val MaxHp: int = 100 with get, set
+
+    [<Export>]
+    member val CurrentHp: int = 100 with get, set
 
     [<Export(PropertyHint.File, "*.tscn")>]
     member val BulletPath: string = Constants.BulletPath with get, set
@@ -30,7 +32,9 @@ type EnemyFs() =
 
     member val AccumulatedMoveTime = 0f with get, set
 
-    member this.OnBulletCollision(body: PhysicsBody2D, attackPower) =
+    member this.OnBulletCollision(body: Node, attackPower) =
+        GD.Print("EnemyFS: OnBulletCollision" + body.Name)
+
         if body.Name = "Enemy" then
             this.TakeDamage(attackPower)
 
@@ -51,13 +55,19 @@ type EnemyFs() =
         bulletInstance.GlobalPosition <- muzzle.GlobalPosition
         bulletInstance.Velocity <- MoveDirectionUtils.MoveDirToVector(this.ShootDirection)
 
-    member this.GetHealth() = this.Hp
+    member this.GetHealth() = this.CurrentHp
 
-    member this.TakeDamage amt = this.Hp <- this.Hp - amt
+    member this.TakeDamage amt =
+        this.CurrentHp <- Mathf.Clamp((this.CurrentHp + amt), 0, this.MaxHp)
 
-    member this.HealDamage amt = this.Hp <- this.Hp + amt
+    member this.HealDamage amt =
+        this.CurrentHp <- Mathf.Clamp((this.CurrentHp + amt), 0, this.MaxHp)
 
-    member this.Die() = this.QueueFree()
+    member this.DeathCheck() = if this.CurrentHp <= 0 then this.Die()
+
+    member this.Die() =
+        GD.Print(this.Name + "Died")
+        this.QueueFree()
 
     member this.ChangeDirection() =
         match this.CurrentMoveDirection with
@@ -68,18 +78,24 @@ type EnemyFs() =
 
     member this.GetVelocityInMoveDirection() =
         match this.CurrentMoveDirection with
-        | Left -> new Vector2(this.CurrentVelocity.x - this.Speed,0f)
-        | Right -> new Vector2(this.CurrentVelocity.x + this.Speed,0f)
-        | Up -> new Vector2(0f,this.CurrentVelocity.y - this.Speed)
-        | Down -> new Vector2(0f,this.CurrentVelocity.y + this.Speed)
+        | Left -> new Vector2(this.CurrentVelocity.x - this.Speed, 0f)
+        | Right -> new Vector2(this.CurrentVelocity.x + this.Speed, 0f)
+        | Up -> new Vector2(0f, this.CurrentVelocity.y - this.Speed)
+        | Down -> new Vector2(0f, this.CurrentVelocity.y + this.Speed)
 
     override this._PhysicsProcess(delta) =
         this.AccumulatedMoveTime <- this.AccumulatedMoveTime + delta
-        this.CurrentVelocity<-Vector2.Zero
+        this.CurrentVelocity <- Vector2.Zero
         this.CurrentVelocity <- this.GetVelocityInMoveDirection()
         this.MoveAndSlide(this.CurrentVelocity) |> ignore
+
         if this.AccumulatedMoveTime >= this.MaxMoveTime then
             this.CurrentMoveDirection <- this.ChangeDirection()
-            this.Shoot();
-            GD.Print("ChangeDirection to " + this.CurrentMoveDirection.ToString() )
+            this.Shoot()
+
+            GD.Print(
+                "ChangeDirection to "
+                + this.CurrentMoveDirection.ToString()
+            )
+
             this.AccumulatedMoveTime <- 0f

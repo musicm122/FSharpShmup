@@ -9,14 +9,18 @@ type MoveDirection =
 module InputAction =
     [<Literal>]
     let Shoot = "shoot"
+
     [<Literal>]
     let Left = "left"
+
     [<Literal>]
     let Right = "right"
+
     [<Literal>]
-    let Up= "up"
+    let Up = "up"
+
     [<Literal>]
-    let Down= "down"
+    let Down = "down"
 
 module Constants =
 
@@ -31,7 +35,8 @@ module Constants =
 
 module MoveDirectionUtils =
     open Godot
-    let MoveDirToVector(dir:MoveDirection) =
+
+    let MoveDirToVector (dir: MoveDirection) =
         match dir with
         | MoveDirection.Down -> Vector2.Down
         | MoveDirection.Up -> Vector2.Up
@@ -63,13 +68,15 @@ module GDUtils =
             GD.Print(msg + " Postion x, y :", this.GlobalPosition.x.ToString(), this.GlobalPosition.y.ToString())
 
     type Node with
+        member this.ReloadScene() = this.GetTree().ReloadCurrentScene()
+
         member this.LoadScene<'a when 'a :> Node> scene =
             let scene = loadScene scene
             let node = scene.Instance() :?> 'a
             this.AddChild node
             node
 
-        member this.getNode<'a when 'a :> Node and 'a: not struct>(path: string) =
+        member this.GetNode<'a when 'a :> Node and 'a: not struct>(path: string) =
             lazy (this.GetNode<'a>(new NodePath(path)))
 
         member this.addSprite name location =
