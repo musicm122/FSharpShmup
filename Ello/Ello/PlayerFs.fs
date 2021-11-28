@@ -7,6 +7,9 @@ type PlayerFs() =
     inherit KinematicBody2D()
 
     [<Export>]
+    member val Acceleration = 10f with get, set
+
+    [<Export>]
     member val RateOfFire = 1f with get, set
 
     [<Export>]
@@ -61,6 +64,9 @@ type PlayerFs() =
 
     member this.DeathCheck() = if this.CurrentHp <= 0 then this.Die()
 
+    member this.ApplyConstantAcceleration(velocity: Vector2) =
+        Vector2(velocity.x, velocity.y - this.Acceleration)
+
     member this.Die() =
         GD.Print("You Died")
         base.ReloadScene() |> ignore
@@ -87,9 +93,8 @@ type PlayerFs() =
 
     override this._PhysicsProcess(delta) =
         if this.ShootCheck() then this.Shoot()
-        this.DeathCheck()
-
-        ()
         |> this.GetInputMovement
         |> this.MoveAndSlide
         |> ignore
+
+        this.DeathCheck()

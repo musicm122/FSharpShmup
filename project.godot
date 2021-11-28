@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Hello F Sharp"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Title.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
@@ -58,9 +58,9 @@ pause={
 
 [mono]
 
-f#_tools/auto_generate_f#_scripts=false
-f#_tools/default_output_dir=""
-f#_tools/default_namespace=""
+f#_tools/auto_generate_f#_scripts=true
+f#_tools/default_output_dir="C:\\Projects\\godot\\HelloFSharp\\Ello\\Ello"
+f#_tools/default_namespace="Ello"
 
 [physics]
 
@@ -68,4 +68,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"

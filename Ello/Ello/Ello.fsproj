@@ -9,9 +9,11 @@
 	<ItemGroup>
 		<Compile Include="GDUtils.fs" />
 		<Compile Include="Interfaces.fs" />
-		<Compile Include="HealthDisplayFs.fs" />
+		<Compile Include="TitleFs.fs" />
 		<Compile Include="BulletFs.fs" />
 		<Compile Include="EnemyFs.fs" />
+		<Compile Include="PlayerCameraFs.fs" />
+		<Compile Include="HealthDisplayFs.fs" />
 		<Compile Include="PlayerFs.fs" />
 		<Compile Include="MainFs.fs" />
 		<None Include="Script.fsx" />
