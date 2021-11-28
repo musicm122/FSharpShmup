@@ -1230,3 +1230,21 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+.ionide/symbolCache.db
+.mono/temp/obj/Hello F Sharp.csproj.nuget.dgspec.json
+.mono/temp/obj/Hello F Sharp.csproj.nuget.g.props
+.mono/temp/obj/Hello F Sharp.csproj.nuget.g.targets
+.mono/temp/obj/project.assets.json
+.mono/temp/obj/Debug/Hello F Sharp.assets.cache
+.mono/temp/obj/Debug/Hello F Sharp.csproj.AssemblyReference.cache
+.mono/temp/obj/Debug/Hello F Sharp.GeneratedMSBuildEditorConfig.editorconfig
+Ello/Ello/obj/Ello.fsproj.nuget.dgspec.json
+Ello/Ello/obj/Ello.fsproj.nuget.g.props
+Ello/Ello/obj/Ello.fsproj.nuget.g.targets
+Ello/Ello/obj/fsac.cache
+Ello/Ello/obj/project.assets.json
+Ello/Ello/obj/project.nuget.cache
+Ello/Ello/obj/Debug/net472/Ello.AssemblyInfo.fs
+Ello/Ello/obj/Debug/net472/Ello.assets.cache
+Ello/Ello/obj/Debug/net472/Ello.fsproj.AssemblyReference.cache
+Ello/Ello/obj/Debug/net472/Ello.fsproj.CoreCompileInputs.cache
