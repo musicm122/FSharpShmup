@@ -1,10 +1,26 @@
 ﻿namespace Ello
 
+open Godot
+
 type MoveDirection =
     | Left
     | Right
     | Up
     | Down
+
+    member this.ChangeDirection() =
+        match this with
+        | Left -> Right
+        | Right -> Left
+        | Up -> Down
+        | Down -> Up
+
+    member this.GetVelocityInMoveDirection (velocity: Vector2) (speed: float32) =
+        match this with
+        | Left -> new Vector2(velocity.x - speed, 0f)
+        | Right -> new Vector2(velocity.x + speed, 0f)
+        | Up -> new Vector2(0f, velocity.y - speed)
+        | Down -> new Vector2(0f, velocity.y + speed)
 
 module InputAction =
     [<Literal>]

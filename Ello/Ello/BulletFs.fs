@@ -2,37 +2,40 @@ namespace Ello
 
 open Godot
 
-type BulletFs() =
+type BulletFs() as this =
     inherit Area2D()
+
+    let _destroyableData =
+        { DestroyableData.Default() with OnDestroy = fun () -> this.QueueFree() }
+
+    let _ammoData =
+        { AmmoData.Default() with Destroyable = Destroyable _destroyableData }
+
+    member val Ammo = Ammo(_ammoData)
+
+    member val Direction = Vector2.Zero with get, set
 
     member val OnCollisionFunc = ignore with get, set
 
     [<Export>]
-    member val AttackPower = 1 with get, set
+    member this.AttackPower
+        with get () = this.Ammo.AttackPower
+        and set (value) = this.Ammo.AttackPower <- value
 
     [<Export>]
-    member val Speed = 100f with get, set
-
-    member val Velocity = Vector2.Zero with get, set
-
-    [<Export>]
-    member val PlayerPath = "res://Player.tscn" with get, set
+    member this.Speed
+        with get () = this.Ammo.Speed
+        and set (value) = this.Ammo.Speed <- value
 
     [<Export>]
-    member val TimeToLive = 5f with get, set
+    member this.TimeToLive
+        with get () = this.Ammo.Destroyable.TimeToLive
+        and set (value) = this.Ammo.Destroyable.TimeToLive <- value
 
-    member val AccumulatedTime = 0f with get, set
-
-    member this.ApplyDamage(target: IHealth) = target.TakeDamage this.AttackPower
-    
     member this.OnCollision(body: Node) =
-        GD.Print("OnBulletCollision "+body.Name)
         this.OnCollisionFunc(body, this.AttackPower)
         this.QueueFree()
 
-    override this._PhysicsProcess(delta) =
-        this.Translate(this.Velocity * this.Speed * delta)
-        this.AccumulatedTime <- this.AccumulatedTime + delta
-
-        if this.AccumulatedTime > this.TimeToLive then
-            this.QueueFree()
+    override this._PhysicsProcess(delta) =    
+        this.Translate(this.Direction * this.Speed * delta)
+        this.Ammo.Destroyable.AccumulateTime(delta)
