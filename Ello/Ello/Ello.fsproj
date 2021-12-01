@@ -7,6 +7,7 @@
   <ItemGroup>
     <Compile Include="GDUtils.fs" />
     <Compile Include="Interfaces.fs" />
+    <Compile Include="RollingCameraFs.fs" />
     <Compile Include="TitleFs.fs" />
     <Compile Include="BulletFs.fs" />
     <Compile Include="Ship.fs" />

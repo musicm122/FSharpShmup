@@ -7,9 +7,10 @@
 extents = Vector2( 32, 17 )
 
 [node name="Enemy" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 Speed = 1.0
-CooldownTime = 1.0
 MaxMoveTime = 1.0
 
 [node name="Muzzle" type="Position2D" parent="."]

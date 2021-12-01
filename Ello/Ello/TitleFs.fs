@@ -10,14 +10,13 @@ type TitleFs() =
 
     override this._Ready() =
         let startButton = base.FindNode("StartButton") :?> Button
-        if startButton<>null then
-            GD.Print("startButton is not null ")
+
+        if startButton <> null then
             startButton.GrabFocus()
         else
-            GD.Print("startButton is null ")
+            GD.PushWarning("startButton is null ")
 
     member this.OnStartButtonPressed() =
         base.GetTree().ChangeScene(this.NewGameScene)
 
-    member this.OnQuitButtonPressed() =
-        base.GetTree().Quit()
+    member this.OnQuitButtonPressed() = base.GetTree().Quit()
