@@ -72,6 +72,7 @@ Speed = 50.0
 
 [node name="Player" parent="RollingCamera" instance=ExtResource( 1 )]
 position = Vector2( 1, 20 )
+rotation = 4.71239
 MaxHp = 3
 CurrentHp = 3
 Speed = 200.0

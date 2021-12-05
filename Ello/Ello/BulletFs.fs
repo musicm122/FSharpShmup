@@ -36,6 +36,16 @@ type BulletFs() as this =
         this.OnCollisionFunc(body, this.AttackPower)
         this.QueueFree()
 
-    override this._PhysicsProcess(delta) =    
+    member this.Fire(delta) =
         this.Translate(this.Direction * this.Speed * delta)
+
+    member this.FireInDirection dir speed delta = this.Translate(dir * speed * delta)
+
+    member this.FireAtAngle (dir: Vector2) (speed: float32) (delta: float32) =
+        let angle = this.Rotation - Mathf.Pi / 2f
+        let dir = new Vector2(cos (angle), - sin(angle))
+        this.FireInDirection dir speed delta
+
+    override this._PhysicsProcess(delta) =
+        this.FireAtAngle this.Direction this.Speed delta
         this.Ammo.Destroyable.AccumulateTime(delta)

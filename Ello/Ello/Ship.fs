@@ -8,6 +8,9 @@ type Ship() =
 
     member val ShootDirection = Down with get, set
 
+    member val MuzzlePath = "Muzzle" with get, set
+
+
     [<Export>]
     member val Acceleration = 10f with get, set
 
@@ -49,13 +52,17 @@ type Ship() =
         instance
 
     abstract member Shoot : unit -> unit
+    abstract member GetMuzzle : unit -> Position2D
+
+    default this.GetMuzzle() =
+        this.GetNode<Position2D>(new NodePath(this.MuzzlePath))
 
     default this.Shoot() =
         let bulletInstance = this.InstantiateBullet this.BulletPath
         this.AddChild(bulletInstance)
 
         let muzzle =
-            this.GetNode<Position2D>(new NodePath("Muzzle"))
+            this.GetNode<Position2D>(new NodePath(this.MuzzlePath))
 
         bulletInstance.SetAsToplevel(true)
         bulletInstance.GlobalPosition <- muzzle.GlobalPosition

@@ -92,3 +92,4 @@ type HealthProvider(args: EntityHealth) =
         this.CurrentHp <- Mathf.Clamp((this.CurrentHp + amt), 0, this.MaxHp)
 
     member this.Die() : unit = this.OnDeath()
+
