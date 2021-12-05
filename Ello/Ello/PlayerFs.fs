@@ -38,18 +38,19 @@ type PlayerFs() =
     member this.ShootCheck() : bool =
         Input.IsActionJustPressed(InputAction.Shoot)
 
-    member this.ShootInDirection(direction) =
+    member this.ShootInDirection(direction:Vector2) =
         //let line = new Line2D()
-        //todo traw debug line  
-        let bulletInstance = this.InstantiateBullet this.BulletPath
-        this.AddChild(bulletInstance)
-
+        //todo draw debug line  
         let muzzle =
             this.GetNode<Position2D>(new NodePath(this.MuzzlePath))
 
+        let bulletInstance = this.InstantiateBullet this.BulletPath
         bulletInstance.SetAsToplevel(true)
         bulletInstance.GlobalPosition <- muzzle.GlobalPosition
-        bulletInstance.Direction <- this.PlayerSprite.Position
+        bulletInstance.Rotation<-direction.Angle()
+        bulletInstance.Velocity <- direction * bulletInstance.Speed
+
+        this.AddChild(bulletInstance)
 
     override this._Ready() =
         this.MuzzlePath <- "CollisionShape2D/PlayerSprite/Muzzle"
@@ -77,7 +78,9 @@ type PlayerFs() =
 
     override this._PhysicsProcess(delta) =
         if this.ShootCheck() then
-            this.ShootInDirection(this.PlayerSprite.Position)
+            let pos= new Vector2(1f,0f)
+            pos.Rotated(this.PlayerSprite.GlobalRotation)
+            this.ShootInDirection(pos)
 
         let movement = this.GetInputMovement()
         movement |> this.UpdateFacingDirection

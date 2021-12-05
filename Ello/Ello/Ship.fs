@@ -66,7 +66,7 @@ type Ship() =
 
         bulletInstance.SetAsToplevel(true)
         bulletInstance.GlobalPosition <- muzzle.GlobalPosition
-        bulletInstance.Direction <- MoveDirectionUtils.MoveDirToVector(this.ShootDirection)
+        bulletInstance.Velocity <- MoveDirectionUtils.MoveDirToVector(this.ShootDirection)
 
     abstract member ApplyConstantAcceleration : Vector2 -> Vector2
 

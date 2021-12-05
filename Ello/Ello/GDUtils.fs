@@ -99,7 +99,8 @@ module GDUtils =
             this.DrawLine
         *)
 
-        member this.FireInDirection dir speed delta = this.Translate(dir * speed * delta)
+        member this.FireInDirection dir speed delta = 
+            this.Translate(dir * speed * delta)
 
         member this.FireAtAngle (dir: Vector2) (speed: float32) (delta: float32) =
             let angle = this.Rotation - Mathf.Pi / 2f
