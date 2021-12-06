@@ -8,6 +8,9 @@ type RollingCameraFs() =
     member val CurrentMoveDirection = MoveDirection.Up with get, set
 
     [<Export>]
+    member val IsEnabled = true with get, set
+
+    [<Export>]
     member val CurrentVelocity = Vector2.Zero with get, set
 
     member this.GetVelocityInMoveDirection() =
@@ -17,6 +20,7 @@ type RollingCameraFs() =
     member val Speed = 20f with get, set
 
     override this._PhysicsProcess(delta) =
-        this.GetVelocityInMoveDirection()
-        |> this.MoveAndSlide
-        |> ignore
+        if this.IsEnabled then 
+            this.GetVelocityInMoveDirection()
+            |> this.MoveAndSlide
+            |> ignore

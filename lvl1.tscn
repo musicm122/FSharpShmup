@@ -66,13 +66,13 @@ Speed = 4.0
 MaxMoveTime = 2.0
 
 [node name="RollingCamera" parent="." instance=ExtResource( 3 )]
-position = Vector2( 445, 262 )
+position = Vector2( 445, 261 )
 motion/sync_to_physics = false
+IsEnabled = false
 Speed = 50.0
 
 [node name="Player" parent="RollingCamera" instance=ExtResource( 1 )]
 position = Vector2( 1, 20 )
-rotation = 4.71239
 MaxHp = 3
 CurrentHp = 3
 Speed = 200.0

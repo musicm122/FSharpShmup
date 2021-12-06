@@ -51,12 +51,11 @@ type BulletFs() as this =
     //    let dir = new Vector2(cos (angle), - sin(angle))
     //    this.FireInDirection dir speed delta
 
-    //override this._Ready() = 
-    //    this.FireInDirection()
-
+    member this.InitBullet (pos:Vector2) (dir:Vector2) = 
+        this.Position <-pos
+        this.Rotation <- dir.Angle()
+        this.Velocity<- dir * this.Speed
+    
     override this._PhysicsProcess(delta) =
-        this.Position<- this.Velocity * delta
-        //this.Fire delta
-        //this.FireInDirection this.Velocity this.Speed delta
-        //this.FireAtAngle this.Direction this.Speed delta
+        this.Translate(this.Velocity * this.Speed * delta)
         this.Ammo.Destroyable.AccumulateTime(delta)
