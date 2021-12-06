@@ -69,6 +69,7 @@ position = Vector2( 446, 281 )
 MaxHp = 3
 CurrentHp = 3
 Speed = 200.0
+CooldownTime = 0.2
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true

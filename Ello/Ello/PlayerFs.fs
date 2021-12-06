@@ -13,7 +13,9 @@ type PlayerFs() =
     member val Speed = 100f with get, set
 
     [<Export>]
-    member val CooldownTime: float32 = 2f with get, set
+    member val CooldownTime: float32 = 1f with get, set
+    
+    member val CooldownTimeAcc: float32 = 0f with get, set
 
     member val PlayerSprite: Sprite = new Sprite() with get, set
 
@@ -35,7 +37,7 @@ type PlayerFs() =
         this.FacingDirection<-movementDelta
 
     member this.ShootCheck() : bool =
-        Input.IsActionJustPressed(InputAction.Shoot)
+        Input.IsActionPressed(InputAction.Shoot) && this.CooldownTimeAcc <= 0f
 
     member this.ShootInFacingDirection() =
         let muzzlePos =
@@ -61,10 +63,15 @@ type PlayerFs() =
 
     override this._PhysicsProcess(delta) =
         let movement = this.GetInputMovement()
+        
         if this.ShootCheck() then
             this.ShootInFacingDirection()
+            this.CooldownTimeAcc<-this.CooldownTime
         match movement with
         | v when movement.Length() > 0f ->
             movement |> this.UpdateFacingDirectionAlt
             movement |> this.MoveAndSlide |> ignore
         |_-> ignore()
+        if this.CooldownTimeAcc > 0f then             
+            this.CooldownTimeAcc <- this.CooldownTimeAcc - delta
+            GD.Print("this.CooldownTimeAcc=",this.CooldownTimeAcc)
