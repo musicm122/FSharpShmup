@@ -29,9 +29,6 @@ script = ExtResource( 1 )
 position = Vector2( 0, 7 )
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="CollisionShape2D"]
-position = Vector2( 0, -47 )
-
 [node name="PlayerSprite" type="Sprite" parent="CollisionShape2D"]
 position = Vector2( 0, -8 )
 rotation = 1.57079
@@ -50,7 +47,6 @@ texture = ExtResource( 20 )
 position = Vector2( 1, 70.5 )
 scale = Vector2( 1, 1.675 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
 [node name="Muzzle" type="Position2D" parent="CollisionShape2D/PlayerSprite"]

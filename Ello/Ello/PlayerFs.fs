@@ -42,8 +42,10 @@ type PlayerFs() =
             this.GetNode<Position2D>(new NodePath(this.MuzzlePath))
         let bulletInstance = this.InstantiateBullet this.BulletPath
         this.AddChild(bulletInstance)
-        bulletInstance.InitBullet muzzlePos.GlobalPosition this.FacingDirection
+        //bulletInstance.InitBullet muzzlePos.GlobalPosition this.FacingDirection
         bulletInstance.SetAsToplevel(true)
+        bulletInstance.GlobalPosition <- muzzlePos.GlobalPosition
+        bulletInstance.Velocity <- this.FacingDirection.Normalized()
 
     override this._Ready() =
         this.FacingDirection<-Vector2.Up

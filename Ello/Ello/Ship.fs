@@ -62,11 +62,11 @@ type Ship() =
         this.AddChild(bulletInstance)
         let muzzle =
             this.GetNode<Position2D>(new NodePath(this.MuzzlePath))
-
         bulletInstance.SetAsToplevel(true)
         bulletInstance.GlobalPosition <- muzzle.GlobalPosition
-
-        bulletInstance.Velocity <- MoveDirectionUtils.MoveDirToVector(this.ShootDirection)
+        bulletInstance.Velocity <- MoveDirectionUtils.MoveDirToVector(this.ShootDirection)        
+        //let dir = MoveDirectionUtils.MoveDirToVector(this.ShootDirection)
+        //bulletInstance.InitBullet muzzle.GlobalPosition dir 
 
     abstract member ApplyConstantAcceleration : Vector2 -> Vector2
 
