@@ -8,10 +8,6 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.23913, 0.983696, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.364153, 0.364153, 0.364153, 1, 0.94837, 0.94837, 0.94837, 1, 1, 1, 1, 1 )
-
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 23 ) ],
@@ -20,26 +16,43 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.23913, 0.983696, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.364153, 0.364153, 0.364153, 1, 0.94837, 0.94837, 0.94837, 1, 1, 1, 1, 1 )
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource( 1 )
 
-[node name="Muzzle" type="Position2D" parent="."]
-position = Vector2( 0, -50 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 7 )
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="CollisionShape2D"]
-position = Vector2( 0, -47 )
-
-[node name="Sprite" type="Sprite" parent="CollisionShape2D"]
-position = Vector2( 0, -7 )
+[node name="PlayerSprite" type="Sprite" parent="CollisionShape2D"]
+position = Vector2( 0, -8 )
+rotation = 1.57079
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_bone_": true
+}
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="CollisionShape2D/Sprite"]
+[node name="Light2D" type="Light2D" parent="CollisionShape2D/PlayerSprite"]
+position = Vector2( 1.74492, 80.6068 )
+rotation = -3.14159
+scale = Vector2( 4.05868, 2.52302 )
+texture = ExtResource( 20 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CollisionShape2D/PlayerSprite"]
+position = Vector2( 1, 70.5 )
+scale = Vector2( 1, 1.675 )
+frames = SubResource( 2 )
+playing = true
+
+[node name="Muzzle" type="Position2D" parent="CollisionShape2D/PlayerSprite"]
+position = Vector2( 0, -49 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CollisionShape2D/PlayerSprite"]
 position = Vector2( -1, 43 )
 z_index = 1
 amount = 12
@@ -59,13 +72,3 @@ color = Color( 0.47451, 0.47451, 0.47451, 1 )
 color_ramp = SubResource( 3 )
 hue_variation = 0.03
 hue_variation_random = 1.0
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 1, 69.5 )
-scale = Vector2( 1, 1.675 )
-frames = SubResource( 2 )
-frame = 4
-playing = true
-
-[node name="Light2D" type="Light2D" parent="."]
-texture = ExtResource( 20 )

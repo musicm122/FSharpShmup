@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://RollingCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Art/Space Shooter Pack/Backgrounds/purple.png" type="Texture" id=4]
 
 [node name="lvl1" type="Node"]
@@ -65,16 +64,16 @@ position = Vector2( 731, -1186 )
 Speed = 4.0
 MaxMoveTime = 2.0
 
-[node name="RollingCamera" parent="." instance=ExtResource( 3 )]
-position = Vector2( 445, 262 )
-motion/sync_to_physics = false
-Speed = 50.0
-
-[node name="Player" parent="RollingCamera" instance=ExtResource( 1 )]
-position = Vector2( 1, 20 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 446, 281 )
 MaxHp = 3
 CurrentHp = 3
 Speed = 200.0
+CooldownTime = 0.2
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+smoothing_enabled = true
 
 [node name="Enemy3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 225, -1275 )

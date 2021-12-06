@@ -70,7 +70,43 @@ module GDUtils =
     let loadScene name =
         GD.Load<PackedScene>("res://scenes/" + name + ".tscn")
 
+    let getInputMovement (speed: float32) : Vector2 =
+        let mutable velocity = Vector2()
+
+        if Input.IsActionPressed(InputAction.Right) then
+            velocity.x <- velocity.x + 1f
+
+        if Input.IsActionPressed(InputAction.Left) then
+            velocity.x <- velocity.x - 1f
+
+        if Input.IsActionPressed(InputAction.Up) then
+            velocity.y <- velocity.y - 1f
+
+        if Input.IsActionPressed(InputAction.Down) then
+            velocity.y <- velocity.y + 1f
+
+        velocity.Normalized() * speed
+
     type Node2D with
+
+
+        (*let drawCircleArcPoly (center:Vector2) (radius:float32) (angleFrom:float32) (angleTo:float32) (color:Color) =
+            let nbPoints = 32
+            let pointsArc =  Array.zeroCreate 32
+            pointsArc[0] = center
+            let colors = [| color |]
+            [ 0 .. nbPoints ].
+            this.DrawLine
+        *)
+
+        member this.FireInDirection dir speed delta = 
+            this.Translate(dir * speed * delta)
+
+        member this.FireAtAngle (dir: Vector2) (speed: float32) (delta: float32) =
+            let angle = this.Rotation - Mathf.Pi / 2f
+            let dir = new Vector2(cos (angle), - sin(angle))
+            this.FireInDirection dir speed delta
+
         member this.PrintLocalPosition() =
             GD.Print("Postion x, y :", this.Position.x.ToString(), this.Position.y.ToString())
 
