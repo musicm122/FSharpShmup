@@ -76,13 +76,6 @@ type HealthProvider(args: EntityHealth) =
     member val OnDeath = args.OnDeath with get, set
 
     member this.TakeDamage amt =
-        //GD.Print(
-        //    "TakeDamage "
-        //    + amt.ToString()
-        //    + " CurrentHP = "
-        //    + this.CurrentHp.ToString()
-        //)
-
         this.OnDamage()
         this.CurrentHp <- Mathf.Clamp((this.CurrentHp - amt), 0, this.MaxHp)
         if this.CurrentHp <= 0 then this.Die()

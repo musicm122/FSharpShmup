@@ -63,7 +63,10 @@ module GDUtils =
     open Godot
 
     let loadTexture name =
-        GD.Load<Texture>("res://assets/" + name + ".png")
+        GD.Load<Texture>("res://Art/" + name + ".png")
+
+    let loadBarTexture name =
+        GD.Load<Texture>("res://Art/HealthBar/" + name + ".png")
 
     let setTexture name (sprite: Sprite) = sprite.Texture <- loadTexture name
 
@@ -118,6 +121,10 @@ module GDUtils =
 
         member this.PrintGlobalPosition(msg) =
             GD.Print(msg + " Postion x, y :", this.GlobalPosition.x.ToString(), this.GlobalPosition.y.ToString())
+
+        member this.GetNodeLazy<'a when 'a :> Node and 'a: not struct>(path: string) =
+            lazy (this.GetNode<'a>(new NodePath(path)))
+
 
     type Node with
         member this.ReloadScene() = this.GetTree().ReloadCurrentScene()
