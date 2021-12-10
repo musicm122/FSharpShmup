@@ -36,21 +36,6 @@ type BulletFs() as this =
         this.OnCollisionFunc(body, this.AttackPower)
         this.QueueFree()
 
-    //member this.Fire(delta) =
-    //    this.Translate(this.Velocity.Normalized() * this.Speed * delta)
-
-    //member this.FireInDirection (dir:Vector2) (speed:float32) (delta:float32) = 
-    //    this.Rotation <- dir.Angle()
-    //    this.Velocity <- dir * speed
-
-    //member this.FireInCurrentDirection (delta:float32) = 
-    //    this.FireInDirection this.Position this.Speed delta
-
-    //member this.FireAtAngle (dir: Vector2) (speed: float32) (delta: float32) =
-    //    let angle = this.Rotation - Mathf.Pi / 2f
-    //    let dir = new Vector2(cos (angle), - sin(angle))
-    //    this.FireInDirection dir speed delta
-
     member this.InitBullet (pos:Vector2) (dir:Vector2) = 
         this.Position <-pos
         this.Rotation <- dir.Angle()
