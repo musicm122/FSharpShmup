@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/doomfire.wav-e4020454a99d2261c583642e9a406427.sample"
+
+[deps]
+
+source_file="res://Audio/Effects/cugzilia_sound_effects/doomfire.wav"
+dest_files=[ "res://.import/doomfire.wav-e4020454a99d2261c583642e9a406427.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

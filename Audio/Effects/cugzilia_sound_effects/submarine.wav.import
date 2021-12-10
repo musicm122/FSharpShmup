@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/submarine.wav-57c1783a8ad37bb084e459b57c2d33bf.sample"
+
+[deps]
+
+source_file="res://Audio/Effects/cugzilia_sound_effects/submarine.wav"
+dest_files=[ "res://.import/submarine.wav-57c1783a8ad37bb084e459b57c2d33bf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

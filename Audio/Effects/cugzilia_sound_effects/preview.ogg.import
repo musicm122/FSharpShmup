@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/preview.ogg-1c9e63650b799f376b3f104551575648.oggstr"
+
+[deps]
+
+source_file="res://Audio/Effects/cugzilia_sound_effects/preview.ogg"
+dest_files=[ "res://.import/preview.ogg-1c9e63650b799f376b3f104551575648.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/conveyor.wav-9ae25c66d093f53b9e47321b4485aebe.sample"
+
+[deps]
+
+source_file="res://Audio/Effects/cugzilia_sound_effects/conveyor.wav"
+dest_files=[ "res://.import/conveyor.wav-9ae25c66d093f53b9e47321b4485aebe.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

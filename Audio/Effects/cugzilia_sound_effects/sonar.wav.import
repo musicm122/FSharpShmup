@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sonar.wav-ac41071131060386bb43e1c4d0009f45.sample"
+
+[deps]
+
+source_file="res://Audio/Effects/cugzilia_sound_effects/sonar.wav"
+dest_files=[ "res://.import/sonar.wav-ac41071131060386bb43e1c4d0009f45.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

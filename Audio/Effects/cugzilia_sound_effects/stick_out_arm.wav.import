@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/stick_out_arm.wav-e9b7685765de44bdcba488129e3c06af.sample"
+
+[deps]
+
+source_file="res://Audio/Effects/cugzilia_sound_effects/stick_out_arm.wav"
+dest_files=[ "res://.import/stick_out_arm.wav-e9b7685765de44bdcba488129e3c06af.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

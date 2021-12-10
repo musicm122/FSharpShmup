@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/danfire.wav-2542c55d53b0a5c8c554c3f838a128b6.sample"
+
+[deps]
+
+source_file="res://Audio/Effects/cugzilia_sound_effects/danfire.wav"
+dest_files=[ "res://.import/danfire.wav-2542c55d53b0a5c8c554c3f838a128b6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

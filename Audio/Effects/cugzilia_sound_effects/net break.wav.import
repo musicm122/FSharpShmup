@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/net break.wav-e45b12593fb01f4f4dc2695440af0d90.sample"
+
+[deps]
+
+source_file="res://Audio/Effects/cugzilia_sound_effects/net break.wav"
+dest_files=[ "res://.import/net break.wav-e45b12593fb01f4f4dc2695440af0d90.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

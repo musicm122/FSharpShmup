@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/level win.wav-f5d9897d4fcf0594ea10b6f204508f56.sample"
+
+[deps]
+
+source_file="res://Audio/Effects/cugzilia_sound_effects/level win.wav"
+dest_files=[ "res://.import/level win.wav-f5d9897d4fcf0594ea10b6f204508f56.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
