@@ -4,12 +4,12 @@ open Godot
 
 type Ship() =
     inherit KinematicBody2D()
-    member val HpProvider = HealthProvider(EntityHealth.Default())
 
+    member val HpProvider = HealthProvider(EntityHealth.Default())
+    
     member val ShootDirection = Down with get, set
 
     member val MuzzlePath = "Muzzle" with get, set
-
 
     [<Export>]
     member val Acceleration = 10f with get, set
@@ -20,7 +20,8 @@ type Ship() =
     [<Export>]
     member this.MaxHp
         with get () = this.HpProvider.MaxHp
-        and set (value) = this.HpProvider.MaxHp <- value
+        and set (value) = 
+            this.HpProvider.MaxHp <- value
 
     [<Export>]
     member this.CurrentHp
@@ -35,13 +36,13 @@ type Ship() =
     default this.OnBulletCollision(body: Node, attackPower: int) : unit =
         let applyDamage =
             fun () ->
-                let e = body :?> Ship
+                let e = body :?> Ship                
                 e.HpProvider.TakeDamage(attackPower) |> ignore
 
         match body.Name.ToLower() with
         | "player" -> applyDamage ()
         | name when name.Contains("enemy") -> applyDamage ()
-        | _ -> ignore ()
+        | _ -> ignore ()       
 
     abstract member InstantiateBullet : string -> BulletFs
 
@@ -65,9 +66,7 @@ type Ship() =
         bulletInstance.SetAsToplevel(true)
         bulletInstance.GlobalPosition <- muzzle.GlobalPosition
         bulletInstance.Velocity <- MoveDirectionUtils.MoveDirToVector(this.ShootDirection)        
-        //let dir = MoveDirectionUtils.MoveDirToVector(this.ShootDirection)
-        //bulletInstance.InitBullet muzzle.GlobalPosition dir 
-
+    
     abstract member ApplyConstantAcceleration : Vector2 -> Vector2
 
     default this.ApplyConstantAcceleration(velocity: Vector2) =
