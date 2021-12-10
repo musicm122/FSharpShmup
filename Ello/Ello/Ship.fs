@@ -31,9 +31,9 @@ type Ship() =
     [<Export(PropertyHint.File, "*.tscn")>]
     member val BulletPath: string = Constants.BulletPath with get, set
 
-    abstract member OnBulletCollision : Node * int -> unit
+    abstract member OnBulletCollision : Node * float -> unit
 
-    default this.OnBulletCollision(body: Node, attackPower: int) : unit =
+    default this.OnBulletCollision(body: Node, attackPower: float) : unit =
         let applyDamage =
             fun () ->
                 let e = body :?> Ship                

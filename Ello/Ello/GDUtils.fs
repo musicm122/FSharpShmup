@@ -37,6 +37,9 @@ module InputAction =
 
     [<Literal>]
     let Down = "down"
+    
+    [<Literal>]
+    let Pause = "pause"
 
 module Constants =
 
@@ -58,6 +61,17 @@ module MoveDirectionUtils =
         | MoveDirection.Up -> Vector2.Up
         | MoveDirection.Left -> Vector2.Left
         | MoveDirection.Right -> Vector2.Right
+
+module MathUtils = 
+    let clamp (min:float) (max:float) (value:float) = 
+        let currentValue = (float32)value 
+        let min = (float32)min
+        let max = (float32)max
+        let result = Mathf.Clamp(currentValue, min, max)
+        (float)result
+
+    let clampMinZero max value = 
+        clamp 0.0 max value       
 
 module GDUtils =
     open Godot

@@ -3,29 +3,27 @@
 open Godot
 
 type EntityHealth =
-    { mutable MaxHp: int
-      mutable CurrentHp: int
-      OnHeal: unit -> unit
+    { mutable MaxHp: float
+      mutable CurrentHp: float
+      OnHeal: float-> unit
       OnDeath: unit -> unit
-      OnDamage: unit -> unit
+      OnDamage: float -> unit
       IsDead: unit -> bool }
     static member Default() =
-        let _MaxHp = 2
-        let _CurrentHp = 2
+        let _MaxHp = 2.0
+        let _CurrentHp = 2.0
 
         { MaxHp = _MaxHp
           CurrentHp = _CurrentHp
           IsDead =
             fun () ->
-                GD.Print(
-                    "IsDead called with currentHp = "
-                    + _CurrentHp.ToString()
-                )
-
-                _CurrentHp <= 0
-          OnDamage = fun () -> GD.Print("OnDamage called")
-          OnHeal = fun () -> GD.Print("OnHeal Called")
-          OnDeath = fun () -> GD.Print("OnDeath Called") }
+                _CurrentHp <= 0.0
+          OnDamage = 
+            fun (damageAmt) -> GD.Print("OnDamage called with "+ damageAmt.ToString())
+          OnHeal = 
+            fun (healAmt) -> GD.Print("OnHeal Called with "+ healAmt.ToString())
+          OnDeath = 
+            fun () -> GD.Print("OnDeath Called") }
 
 type DestroyableData =
     { TTL: float32
@@ -46,13 +44,13 @@ type Destroyable(arg: DestroyableData) =
             this.Destroy()
 
 type AmmoData =
-    { AttackPower: int
+    { AttackPower: float
       Speed: float32
       mutable Destroyable: Destroyable }
     static member Default() =
         let _destroyable = Destroyable(DestroyableData.Default())
 
-        { AttackPower = 1
+        { AttackPower = 1.0
           Speed = 100f
           Destroyable = _destroyable }
 
@@ -68,21 +66,23 @@ type Ammo(args: AmmoData) =
         this.Destroyable.Destroy()
 
 
-type HealthProvider(args: EntityHealth) =
+type HealthProvider(args: EntityHealth) =    
     member val MaxHp = args.MaxHp with get, set
     member val CurrentHp = args.CurrentHp with get, set
     member val OnDamage = args.OnDamage with get, set
     member val OnHeal = args.OnHeal with get, set
-    member val OnDeath = args.OnDeath with get, set
+    member val OnDeath = args.OnDeath with get, set    
 
+    member this.ClampHp(currVal) = 
+        MathUtils.clampMinZero this.MaxHp currVal
+    
     member this.TakeDamage amt =
-        this.OnDamage()
-        this.CurrentHp <- Mathf.Clamp((this.CurrentHp - amt), 0, this.MaxHp)
-        if this.CurrentHp <= 0 then this.Die()
+        this.CurrentHp <- this.ClampHp (this.CurrentHp - amt) 
+        this.OnDamage(amt)
+        if this.CurrentHp <= 0.0 then this.Die()
 
     member this.HealDamage amt =
-        this.OnHeal()
-        this.CurrentHp <- Mathf.Clamp((this.CurrentHp + amt), 0, this.MaxHp)
+        this.CurrentHp <- this.ClampHp (this.CurrentHp + amt) 
+        this.OnHeal(amt)
 
     member this.Die() : unit = this.OnDeath()
-
