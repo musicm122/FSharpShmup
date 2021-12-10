@@ -6,9 +6,6 @@ open Ello.GDUtils
 type PlayerFs() =
     inherit Ship()
 
-    //[<Export>]
-    //member val HealthDisplayPath = "HealthDisplay" with get, set
-
     [<Export>]
     member val CollisionShape2DPath = "CollisionShape2D" with get, set
 
@@ -18,15 +15,9 @@ type PlayerFs() =
     [<Export>]
     member val MuzzlePath = "CollisionShape2D/PlayerSprite/Muzzle" with get, set
 
-    //member this.GetHealthDisplay() =
-    //    base.GetNode<HealthDisplayFs>(new NodePath(this.HealthDisplayPath))
-
     member this.GetCollisionShape2D() =
         base.GetNode<CollisionShape2D>(new NodePath(this.CollisionShape2DPath))
-
-    //member val HealthDisplay =
-    //    base.GetNode<HealthDisplayFs>(new NodePath("../HealthDisplay"))
-
+    
     [<Export>]
     member val Acceleration = 10f with get, set
 
@@ -76,12 +67,6 @@ type PlayerFs() =
         bulletInstance.Velocity <- this.FacingDirection.Normalized()
 
     override this._Ready() =
-        //let healthBar = this.GetHealthDisplay()
-        //let maxHp = (float) this.HpProvider.MaxHp
-        //let currentHp = (float) this.HpProvider.CurrentHp
-        //healthBar.UpdateHealthBar currentHp maxHp
-        //healthBar.Show()
-
         this.FacingDirection <- Vector2.Up
         this.MuzzlePath <- this.MuzzlePath
 
