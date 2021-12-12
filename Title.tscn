@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Title.cs" type="Script" id=2]
+[ext_resource path="res://Audio/Effects/cugzilia_sound_effects/beep.wav" type="AudioStream" id=3]
+[ext_resource path="res://Audio/Music/5_Action_Chiptunes_By_Juhani_Junkala/Juhani Junkala [Retro Game Music Pack] Title Screen.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -74,5 +76,15 @@ custom_fonts/font = SubResource( 3 )
 text = "Quit"
 flat = true
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="focus_entered" from="Control/VBoxContainer" to="." method="OnVBoxFocusEntered"]
+[connection signal="focus_entered" from="Control/VBoxContainer/StartButton" to="." method="OnVBoxFocusEntered"]
 [connection signal="pressed" from="Control/VBoxContainer/StartButton" to="." method="OnStartButtonPressed"]
+[connection signal="focus_entered" from="Control/VBoxContainer/Quit" to="." method="OnVBoxFocusEntered"]
 [connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="OnQuitButtonPressed"]

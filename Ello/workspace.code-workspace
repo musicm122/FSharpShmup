@@ -4,8 +4,12 @@
 			"path": ".."
 		},
 		{
-			"path": "..\\..\\fsharp_godot\\GodotFsBasic"
+			"path": "X:\\Projects\\Godot\\FSharpShmup"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"godot_tools.editor_path": "X:/apps/Godot_v3.4-stable_mono_win64/Godot_v3.4-stable_mono_win64.exe",
+		"godot.csharp.executablePath": "X:/apps/Godot_v3.4-stable_mono_win64/Godot_v3.4-stable_mono_win64.exe",
+		"FSharp.verboseLogging": true
+	}
 }

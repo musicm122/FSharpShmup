@@ -55,13 +55,12 @@ type PlayerFs() =
         Input.IsActionPressed(InputAction.Shoot)
         && this.CooldownTimeAcc <= 0f
 
-    member this.ShootInFacingDirection() =
+    member this.Shoot() =
         let muzzlePos =
             this.GetNode<Position2D>(new NodePath(this.MuzzlePath))
 
         let bulletInstance = this.InstantiateBullet this.BulletPath
         this.AddChild(bulletInstance)
-        //bulletInstance.InitBullet muzzlePos.GlobalPosition this.FacingDirection
         bulletInstance.SetAsToplevel(true)
         bulletInstance.GlobalPosition <- muzzlePos.GlobalPosition
         bulletInstance.Velocity <- this.FacingDirection.Normalized()
@@ -77,6 +76,7 @@ type PlayerFs() =
 
         let onDeath =
             fun () ->
+                this.DieAudio.Play()
                 GD.Print("OnDeath called for player")
                 this.ReloadScene() |> ignore
 
@@ -88,7 +88,7 @@ type PlayerFs() =
         let movement = this.GetInputMovement()
 
         if this.ShootCheck() then
-            this.ShootInFacingDirection()
+            this.Shoot()
             this.CooldownTimeAcc <- this.CooldownTime
 
         match movement with
