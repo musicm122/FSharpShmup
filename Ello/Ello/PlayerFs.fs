@@ -55,7 +55,8 @@ type PlayerFs() =
         Input.IsActionPressed(InputAction.Shoot)
         && this.CooldownTimeAcc <= 0f
 
-    member this.Shoot() =
+    override this.Shoot() =
+        this.ShootAudio.Play()
         let muzzlePos =
             this.GetNode<Position2D>(new NodePath(this.MuzzlePath))
 
