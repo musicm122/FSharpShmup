@@ -7,8 +7,10 @@
   <ItemGroup>
     <Compile Include="GDUtils.fs" />
     <Compile Include="Interfaces.fs" />
+    <Compile Include="PauserFs.fs" />
     <Compile Include="RollingCameraFs.fs" />
     <Compile Include="TitleFs.fs" />
+    <Compile Include="lvl1Fs.fs" />
     <Compile Include="BulletFs.fs" />
     <Compile Include="Ship.fs" />
     <Compile Include="EnemyFs.fs" />
