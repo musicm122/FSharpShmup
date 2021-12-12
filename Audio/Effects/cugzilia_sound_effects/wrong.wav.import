@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wrong.wav-ab5ec29c1d89b91812e753ba89465415.sample"
+
+[deps]
+
+source_file="res://Audio/Effects/cugzilia_sound_effects/wrong.wav"
+dest_files=[ "res://.import/wrong.wav-ab5ec29c1d89b91812e753ba89465415.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

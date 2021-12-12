@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Juhani Junkala [Retro Game Music Pack] Level 1.wav-d39a10b54e0e58b6d018de69150096d2.sample"
+
+[deps]
+
+source_file="res://Audio/Music/5_Action_Chiptunes_By_Juhani_Junkala/Juhani Junkala [Retro Game Music Pack] Level 1.wav"
+dest_files=[ "res://.import/Juhani Junkala [Retro Game Music Pack] Level 1.wav-d39a10b54e0e58b6d018de69150096d2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

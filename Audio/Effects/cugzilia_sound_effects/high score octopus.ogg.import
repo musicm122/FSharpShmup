@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/high score octopus.ogg-c9aed0704834c50db8a39f64f5e86fc9.oggstr"
+
+[deps]
+
+source_file="res://Audio/Effects/cugzilia_sound_effects/high score octopus.ogg"
+dest_files=[ "res://.import/high score octopus.ogg-c9aed0704834c50db8a39f64f5e86fc9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

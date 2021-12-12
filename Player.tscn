@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player.cs" type="Script" id=1]
 [ext_resource path="res://Art/Space Shooter Pack/PNG/playerShip1_green.png" type="Texture" id=2]
+[ext_resource path="res://Audio/Effects/cugzilia_sound_effects/shoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://Audio/Effects/cugzilia_sound_effects/hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audio/Effects/cugzilia_sound_effects/death1.wav" type="AudioStream" id=6]
 [ext_resource path="res://Art/Space Shooter Pack/PNG/Effects/fire14.png" type="Texture" id=20]
 [ext_resource path="res://Art/Space Shooter Pack/PNG/Effects/fire16.png" type="Texture" id=22]
 [ext_resource path="res://Art/Space Shooter Pack/PNG/Effects/fire17.png" type="Texture" id=23]
@@ -47,7 +50,7 @@ texture = ExtResource( 20 )
 position = Vector2( 1, 70.5 )
 scale = Vector2( 1, 1.675 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Muzzle" type="Position2D" parent="CollisionShape2D/PlayerSprite"]
@@ -73,3 +76,12 @@ color = Color( 0.47451, 0.47451, 0.47451, 1 )
 color_ramp = SubResource( 3 )
 hue_variation = 0.03
 hue_variation_random = 1.0
+
+[node name="Shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="TakeDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

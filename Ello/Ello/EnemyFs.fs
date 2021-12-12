@@ -22,7 +22,9 @@ type EnemyFs() =
         this.CurrentMoveDirection.GetVelocityInMoveDirection this.CurrentVelocity this.Speed
 
     override this._Ready() =
-        this.HpProvider.OnDeath <- this.QueueFree
+        this.HpProvider.OnDeath <- 
+            this.DieAudio.Play()
+            this.QueueFree
 
     override this._PhysicsProcess(delta) =
         this.AccumulatedMoveTime <- this.AccumulatedMoveTime + delta

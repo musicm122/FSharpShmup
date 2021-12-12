@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/scooter.wav-d70de6fbd28761c40de8179689a70d61.sample"
+
+[deps]
+
+source_file="res://Audio/Effects/cugzilia_sound_effects/scooter.wav"
+dest_files=[ "res://.import/scooter.wav-d70de6fbd28761c40de8179689a70d61.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

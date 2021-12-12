@@ -25,6 +25,12 @@ type HealthDisplayFs() =
     [<Export>]
     member val TargetPath = "../../../Player" with get, set
 
+    member this.Target = 
+        this.GetNode<Ship>(new NodePath(this.TargetPath)) 
+
+    member this.HealthBarTexture = 
+        this.GetNode<TextureProgress>(new NodePath(this.HealthBarPath)) 
+
     member this.TryGetTarget() : Option<Ship> =
         match this.GetNodeOrNull(new NodePath(this.TargetPath)) with
         | null -> None
@@ -38,43 +44,28 @@ type HealthDisplayFs() =
     [<Export>]
     member val DefaultBar: Texture = barGreen with get, set
 
-    member this.UpdateHealthBar currentHp maxHp =
-        GD.PrintT("UpdateHealthBar called with ", currentHp, maxHp)
+    
+    member this.UpdateHealthBar (currentHp:float) (maxHp:float) =
+            this.HealthBarTexture.MaxValue <- maxHp 
+            this.HealthBarTexture.Value <- currentHp
 
-        match this.TryGetHealthBar() with
-        | None ->
-            GD.PushWarning("GetHealthBar returned null ")
-            GD.PrintErr("Cant find a suitable 'TextureProgress' for the Health Display")
-            this.PrintTree()
-        | hbOption ->
-            let healthBar = hbOption.Value
-            healthBar.MaxValue <- maxHp 
             GD.Print("UpdateHealthBar called with current HP = ", currentHp.ToString())
-            let yellowRange = healthBar.MaxValue * yellowPercent
-            let redRange = healthBar.MaxValue * redPercent
+            let yellowRange = this.HealthBarTexture.MaxValue * yellowPercent
+            let redRange = this.HealthBarTexture.MaxValue * redPercent
 
-            healthBar.TextureProgress_ <-
+            this.HealthBarTexture.TextureProgress_ <-
                 match currentHp with
                 | hp when hp < yellowRange -> barYellow
                 | hp when hp < redRange -> barRed
                 | _ -> this.DefaultBar
 
-            healthBar.Value <- currentHp
-
     override this._Ready() =
         this.GlobalRotation <- 0f
-
-        match this.TryGetTarget() with
-        | None ->
-            GD.PrintErr("Cant find a suitable 'Target' of type Ship for the Health Display")
-            this.PrintTree()
-        | target ->
-            target.Value.HpProvider.OnDamage <-
-                fun () ->
-                    let max = (float) target.Value.HpProvider.MaxHp
-                    let current =
-                        (float) target.Value.HpProvider.CurrentHp
-
-                    this.UpdateHealthBar current max
+        this.UpdateHealthBar this.Target.CurrentHp this.Target.MaxHp 
+        this.Target.HpProvider.OnDamage <-
+            fun (amt) ->
+                let max = this.Target.HpProvider.MaxHp
+                let current = this.Target.HpProvider.CurrentHp
+                this.UpdateHealthBar current max
 
     override this._Process(delta) = this.GlobalRotation <- 0f

@@ -2,6 +2,48 @@
 
 open Godot
 
+module DefaultMusicPaths =
+
+    [<Literal>]
+    let MusicPath= "res://Audio/Music/5_Action_Chiptunes_By_Juhani_Junkala/Juhani Junkala [Retro Game Music Pack] Ending.wav"
+
+    [<Literal>]
+    let Title= MusicPath+ "Juhani Junkala [Retro Game Music Pack] Title Screen.wav"
+
+    [<Literal>]
+    let Level1 = MusicPath+ "Juhani Junkala [Retro Game Music Pack] Level 1.wav"
+
+    [<Literal>]
+    let Level2 = MusicPath+ "Juhani Junkala [Retro Game Music Pack] Level 2.wav"
+
+    [<Literal>]
+    let Level3 = MusicPath+ "Juhani Junkala [Retro Game Music Pack] Level 3.wav"
+
+    [<Literal>]
+    let Ending = MusicPath+ "Juhani Junkala [Retro Game Music Pack] Ending.wav"
+
+module DefaultSoundPaths =
+    [<Literal>]
+    let SoundEffectPath= "res://Audio/Effects/cugzilia_sound_effects/"
+
+    [<Literal>]
+    let PlayerShoot = SoundEffectPath + "shoot.wav"
+
+    [<Literal>]
+    let PlayerTakeDamage = SoundEffectPath + "hit.wav"
+
+    [<Literal>]
+    let PlayerDeath= SoundEffectPath + "death1.wav"
+
+    [<Literal>]
+    let EnemyShoot = SoundEffectPath + "inkshot.wav"
+
+    [<Literal>]
+    let EnemyTakeDamage = SoundEffectPath + "hitenemy.wav"
+
+    [<Literal>]
+    let EnemyDeath= SoundEffectPath + "doomscream.wav"
+
 type MoveDirection =
     | Left
     | Right
@@ -38,6 +80,9 @@ module InputAction =
     [<Literal>]
     let Down = "down"
 
+    [<Literal>]
+    let Pause = "pause"
+
 module Constants =
 
     [<Literal>]
@@ -58,6 +103,17 @@ module MoveDirectionUtils =
         | MoveDirection.Up -> Vector2.Up
         | MoveDirection.Left -> Vector2.Left
         | MoveDirection.Right -> Vector2.Right
+
+module MathUtils =
+    let clamp (min:float) (max:float) (value:float) =
+        let currentValue = (float32)value
+        let min = (float32)min
+        let max = (float32)max
+        let result = Mathf.Clamp(currentValue, min, max)
+        (float)result
+
+    let clampMinZero max value =
+        clamp 0.0 max value
 
 module GDUtils =
     open Godot
@@ -92,7 +148,6 @@ module GDUtils =
 
     type Node2D with
 
-
         (*let drawCircleArcPoly (center:Vector2) (radius:float32) (angleFrom:float32) (angleTo:float32) (color:Color) =
             let nbPoints = 32
             let pointsArc =  Array.zeroCreate 32
@@ -102,7 +157,7 @@ module GDUtils =
             this.DrawLine
         *)
 
-        member this.FireInDirection dir speed delta = 
+        member this.FireInDirection dir speed delta =
             this.Translate(dir * speed * delta)
 
         member this.FireAtAngle (dir: Vector2) (speed: float32) (delta: float32) =
@@ -124,7 +179,6 @@ module GDUtils =
 
         member this.GetNodeLazy<'a when 'a :> Node and 'a: not struct>(path: string) =
             lazy (this.GetNode<'a>(new NodePath(path)))
-
 
     type Node with
         member this.ReloadScene() = this.GetTree().ReloadCurrentScene()

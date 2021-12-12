@@ -5,6 +5,24 @@ open Godot
 type Ship() =
     inherit KinematicBody2D()
 
+    member this.ShootAudio =
+        this.GetNode(new NodePath("Shoot")) :?> AudioStreamPlayer
+    
+    member this.TakeDamageAudio=
+        this.GetNode(new NodePath("TakeDamage")) :?> AudioStreamPlayer
+    
+    member this.DieAudio=
+        this.GetNode(new NodePath("Die")) :?> AudioStreamPlayer
+
+    [<Export(PropertyHint.File, "*.wav")>]
+    member val ShootSound = DefaultSoundPaths.PlayerShoot with get,set
+
+    [<Export(PropertyHint.File, "*.wav")>]
+    member val TakeDamageSound = DefaultSoundPaths.PlayerShoot with get,set
+
+    [<Export(PropertyHint.File, "*.wav")>]
+    member val DeathSound = DefaultSoundPaths.PlayerShoot with get,set
+    
     member val HpProvider = HealthProvider(EntityHealth.Default())
     
     member val ShootDirection = Down with get, set
@@ -31,9 +49,10 @@ type Ship() =
     [<Export(PropertyHint.File, "*.tscn")>]
     member val BulletPath: string = Constants.BulletPath with get, set
 
-    abstract member OnBulletCollision : Node * int -> unit
+    abstract member OnBulletCollision : Node * float -> unit
 
-    default this.OnBulletCollision(body: Node, attackPower: int) : unit =
+    default this.OnBulletCollision(body: Node, attackPower: float) : unit =
+        this.TakeDamageAudio.Play()
         let applyDamage =
             fun () ->
                 let e = body :?> Ship                
@@ -59,6 +78,7 @@ type Ship() =
         this.GetNode<Position2D>(new NodePath(this.MuzzlePath))
 
     default this.Shoot() =
+        this.ShootAudio.Play()
         let bulletInstance = this.InstantiateBullet this.BulletPath
         this.AddChild(bulletInstance)
         let muzzle =
