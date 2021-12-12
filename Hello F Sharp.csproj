@@ -2,7 +2,6 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <RootNamespace>HelloFSharp</RootNamespace>
-    <Configurations>Debug;ExportDebug;ExportRelease</Configurations>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="Ello\Ello\Ello.fsproj" />
