@@ -2,6 +2,13 @@
 
 open Godot
 
+module LevelGroups=
+    [<Literal>]
+    let PlayerGroup= "Player"
+    
+    [<Literal>]
+    let EnemyGroup= "Enemy"
+
 module DefaultMusicPaths =
 
     [<Literal>]
