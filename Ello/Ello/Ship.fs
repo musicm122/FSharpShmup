@@ -25,6 +25,9 @@ type Ship() =
     
     member val HpProvider = HealthProvider(EntityHealth.Default())
     
+    [<Export>]
+    member val IsShootingEnabled = false with get,set
+
     member val ShootDirection = Down with get, set
 
     member val MuzzlePath = "Muzzle" with get, set
@@ -33,10 +36,7 @@ type Ship() =
     member val Acceleration = 10f with get, set
 
     [<Export>]
-    member val Speed = 100f with get, set
-
-    [<Export>]
-    member val DefaultSpeed = 100f with get, set
+    member val Speed = 100f with get, set    
 
     [<Export>]
     member this.MaxHp
@@ -64,6 +64,7 @@ type Ship() =
         match body.Name.ToLower() with
         | "player" -> applyDamage ()
         | name when name.Contains("enemy") -> applyDamage ()
+        | name when  name.Contains("anxiety")  -> applyDamage ()
         | _ -> ignore ()       
 
     abstract member InstantiateBullet : string -> BulletFs
