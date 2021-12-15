@@ -78,7 +78,6 @@ flat = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-autoplay = true
 
 [node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

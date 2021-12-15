@@ -17,9 +17,12 @@ type PlayerFs() =
 
     member this.GetCollisionShape2D() =
         base.GetNode<CollisionShape2D>(new NodePath(this.CollisionShape2DPath))
-    
+
     [<Export>]
     member val Acceleration = 10f with get, set
+
+    [<Export>]
+    member val DefaultSpeed = 100f with get, set
 
     [<Export>]
     member val Speed = 100f with get, set
@@ -83,7 +86,6 @@ type PlayerFs() =
 
         this.HpProvider.OnDeath <- onDeath
         this.UpdateFacingDirectionAlt(Vector2.Up)
-
 
     override this._PhysicsProcess(delta) =
         let movement = this.GetInputMovement()

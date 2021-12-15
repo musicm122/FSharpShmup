@@ -30,9 +30,9 @@ type EnemyFs() =
         this.AccumulatedMoveTime <- this.AccumulatedMoveTime + delta
         this.CurrentVelocity <- Vector2.Zero
         this.CurrentVelocity <- this.GetVelocityInMoveDirection()
-        this.MoveAndSlide(this.CurrentVelocity) |> ignore
+        this.MoveAndSlide(this.CurrentVelocity * this.Speed) |> ignore
 
         if this.AccumulatedMoveTime >= this.MaxMoveTime then
             this.CurrentMoveDirection <- this.ChangeDirection()
-            this.Shoot()
+            if this.IsShootingEnabled then this.Shoot()
             this.AccumulatedMoveTime <- 0f

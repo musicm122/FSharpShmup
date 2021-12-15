@@ -1,7 +1,6 @@
 namespace Ello
 
 open Godot
-open Ello.Singleton
 
 type TitleFs() =
     inherit Node()

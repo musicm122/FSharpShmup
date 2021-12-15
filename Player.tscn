@@ -50,7 +50,6 @@ texture = ExtResource( 20 )
 position = Vector2( 1, 70.5 )
 scale = Vector2( 1, 1.675 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
 [node name="Muzzle" type="Position2D" parent="CollisionShape2D/PlayerSprite"]

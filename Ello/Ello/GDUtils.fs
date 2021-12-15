@@ -2,6 +2,13 @@
 
 open Godot
 
+module LevelGroups=
+    [<Literal>]
+    let PlayerGroup= "Player"
+    
+    [<Literal>]
+    let EnemyGroup= "Enemy"
+
 module DefaultMusicPaths =
 
     [<Literal>]
@@ -117,6 +124,10 @@ module MathUtils =
 
 module GDUtils =
     open Godot
+
+    let getRandomInRange min max = 
+        let rand = new RandomNumberGenerator()
+        rand.RandfRange(min, max)
 
     let loadTexture name =
         GD.Load<Texture>("res://Art/" + name + ".png")
