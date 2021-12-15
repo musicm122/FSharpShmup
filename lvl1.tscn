@@ -75,8 +75,11 @@ smoothing_speed = 20.0
 position = Vector2( -407, -260 )
 
 [node name="Anxiety" parent="." instance=ExtResource( 8 )]
-position = Vector2( 505, 48 )
+position = Vector2( 474, -451 )
 scale = Vector2( 1, 1 )
+collision_layer = 3
+collision_mask = 3
+motion/sync_to_physics = true
 Speed = Vector2( 2, 2 )
 Distance = 5.0
 

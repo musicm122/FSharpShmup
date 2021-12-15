@@ -36,6 +36,9 @@ type Ship() =
     member val Speed = 100f with get, set
 
     [<Export>]
+    member val DefaultSpeed = 100f with get, set
+
+    [<Export>]
     member this.MaxHp
         with get () = this.HpProvider.MaxHp
         and set (value) = 

@@ -20,6 +20,8 @@ type AnxietyFs() =
     [<Export>]
     member val Distance = 20f with get,set
 
+    member val IsAggro = false with get,set
+
     member this.CircleTarget(delta) =
         let player = this.GetPlayer()
         let center = new Vector2(player.GlobalPosition.x / 2.0f, player.GlobalPosition.y / 2.0f)
@@ -33,32 +35,61 @@ type AnxietyFs() =
         this.GlobalPosition <-
             this.GlobalPosition  + new Vector2(Mathf.Cos(rotation), Mathf.Sin(rotation)) * this.Distance
 
-    member this.GetSqDistanceBetweenSelfAndTarget() = 
-        this.GetPlayer().GlobalPosition.DistanceSquaredTo(this.GlobalPosition)
+    member this.GetSqDistanceBetweenSelfAndTarget() =
+        this.GetPlayer().GlobalPosition.DistanceTo(this.GlobalPosition)
         //  var distance = Math.sqrt(Math.pow(Math.abs(apos_x - bpos_x), 2) + Math.pow(Math.abs(apos_y - bpos_y), 2));
-    
-    member this.RotateAroundPointAtAngle (delta:float32) (point:Vector2) (angle:float32) =
-        let playerPos = this.GetPlayer().GlobalPosition
-        //let pointOffset = new Vector2(point.x+this.Distance,point.y+this.Distance)
-        //let newPoint = pointOffset + (this.GlobalPosition - point).Rotated(angle)
-        //let weight = new Vector2(0.5f,0.5f) //rotates slowly into object
-        //let weight = new Vector2(0.85f,0.85f) //rotates ??
-        let weight = new Vector2(1f,1f)  //rotates fast around object and never intersects
-        let distance = this.GetSqDistanceBetweenSelfAndTarget()
-        let x = (Mathf.Cos(angle) * distance) + playerPos.x
-        let y = (Mathf.Sin(angle) * distance) + playerPos.y
-        this.GlobalPosition  <- new Vector2(x,y)
-        //this.GlobalPosition <- this.GlobalPosition.LinearInterpolate(newPoint, weight )
-        //this.GlobalPosition <- (point + (this.GlobalPosition - point).Rotated(angle))
 
-    
+    member this.RotateAroundPointAtAngle (delta:float32) (point:Vector2) (angleIncrement:float32)=
+        this.Angle <- this.Angle + angleIncrement
+        let distance = this.GetSqDistanceBetweenSelfAndTarget()
+        let x = (Mathf.Cos(this.Angle ) * distance) + point.x
+        let y = (Mathf.Sin(this.Angle ) * distance) + point.y
+        new Vector2(x,y)
+
+    member this.OnBodyEntered(body:Node) =
+        this.TriggerAggro(body)
+
+    member this.OnSlowBodyExited(body:Node) =
+        this.RemoveSlow body
+
+    member this.OnSlowBodyEntered(body:Node) =
+        this.ApplySlow body
 
     override this._PhysicsProcess(delta) =
-        this.Angle<- this.Angle + 0.01f
-        GD.Print("Global Position:",this.GlobalPosition)
-        GD.Print("this.Angle:",this.Angle)
-        //this.CircleTarget(delta)
-        //let rand = new RandomNumberGenerator()
-        //this.Angle<- rand.RandfRange(0f,90f)
-        this.RotateAroundPointAtAngle (delta) (this.GetPlayer().GlobalPosition) (this.Angle)
-        //this.RotateAroundPoint (delta) (this.GetPlayer().GlobalPosition)
+        if this.IsAggro then
+            let angle = GDUtils.getRandomInRange 0.01f 0.09f
+            let playerPos = this.GetPlayer().GlobalPosition
+            this.GlobalPosition <- this.RotateAroundPointAtAngle delta playerPos angle
+
+     member this.ApplySlow(body:Node) =
+         match body.Name.ToLowerInvariant() with
+            | "player" ->
+                GD.Print("Applying slow to player")
+                let ship = body:?> Ship
+                ship.Speed<- ship.DefaultSpeed-10f
+                this.IsAggro<-true
+            | _ -> ignore()
+
+     member this.RemoveSlow(body:Node) =
+         GD.Print("OnSlowBodyExited fired")
+         match body.Name.ToLowerInvariant() with
+         | "player" ->
+             GD.Print("Removing slow from player")
+             let ship = body:?> Ship
+             ship.Speed<- ship.DefaultSpeed
+             this.IsAggro<-true
+         | _ -> ignore()
+
+     member this.TriggerAggro(body:Node) =
+        GD.Print("OnBodyEntered fired")
+        match body.Name.ToLowerInvariant() with
+        | "player" ->
+            GD.Print("Player Visible")
+            this.IsAggro<-true
+        | _ -> ignore()
+    
+    member this.OnCollision(body: Node) =
+        GD.Print("OnCollision fired")
+
+    member this.OnNodeReady() =
+        GD.Print("OnNodeReady fired")
