@@ -15,9 +15,6 @@ type PlayerFs() =
     [<Export>]
     member val MuzzlePath = "CollisionShape2D/PlayerSprite/Muzzle" with get, set
 
-    member this.GetCollisionShape2D() =
-        base.GetNode<CollisionShape2D>(new NodePath(this.CollisionShape2DPath))
-
     [<Export>]
     member val Acceleration = 10f with get, set
 
@@ -30,6 +27,9 @@ type PlayerFs() =
     [<Export>]
     member val CooldownTime: float32 = 1f with get, set
 
+    member this.GetCollisionShape2D() =
+        base.GetNode<CollisionShape2D>(new NodePath(this.CollisionShape2DPath))
+
     member val CooldownTimeAcc: float32 = 0f with get, set
 
     member val PlayerSprite: Sprite = new Sprite() with get, set
@@ -37,6 +37,9 @@ type PlayerFs() =
     member val FacingDirection = Vector2.Right with get, set
 
     member this.GetInputMovement() : Vector2 = GDUtils.getInputMovement (this.Speed)
+
+    member this.GetPlayerCamera()=
+        base.GetNode<PlayerCameraFs>(new NodePath("PlayerCamera"))
 
     member this.UpdateFacingDirection(movementDelta) =
         if this.PlayerSprite <> null then
@@ -58,8 +61,15 @@ type PlayerFs() =
         Input.IsActionPressed(InputAction.Shoot)
         && this.CooldownTimeAcc <= 0f
 
-    override this.Shoot() =
+    member this.ShootEffect() =
         this.ShootAudio.Play()
+        this.GetPlayerCamera()
+            .scheduleShake({
+                ScreenShakeInstance.Default() with Duration = 10f; Amplitude=10f; Frequency=10f })
+
+    override this.Shoot() =
+        this.ShootEffect()
+
         let muzzlePos =
             this.GetNode<Position2D>(new NodePath(this.MuzzlePath))
 

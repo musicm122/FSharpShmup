@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Art/Space Shooter Pack/PNG/Enemies/Anxiety.png" type="Texture" id=1]
 [ext_resource path="res://Anxiety.cs" type="Script" id=2]
 [ext_resource path="res://Audio/Effects/cugzilia_sound_effects/ominous sound.wav" type="AudioStream" id=3]
 [ext_resource path="res://Audio/Effects/cugzilia_sound_effects/doomscream.wav" type="AudioStream" id=4]
 [ext_resource path="res://Audio/Effects/cugzilia_sound_effects/hitenemy.wav" type="AudioStream" id=5]
+
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PoolVector2Array( 0, -35, -20, -30, -35, -15, -35, 0, -35, 15, -30, 25, -20, 30, -5, 35, 0, 35, 20, 30, 30, 20, 35, 5, 35, -15, 25, -25, 20, -30 )
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 36.4005
@@ -23,6 +26,10 @@ MaxHp = 3.0
 CurrentHp = 3.0
 MaxMoveTime = 3.0
 Angle = 90.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+scale = Vector2( 1, 1 )
+occluder = SubResource( 4 )
 
 [node name="Muzzle" type="Position2D" parent="."]
 position = Vector2( -1, 47 )
@@ -69,6 +76,7 @@ __meta__ = {
 }
 
 [node name="ViewRadius" type="CollisionShape2D" parent="Sight"]
+position = Vector2( 0, 5 )
 scale = Vector2( 2.21699, 2.42431 )
 shape = SubResource( 2 )
 __meta__ = {

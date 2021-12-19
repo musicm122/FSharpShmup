@@ -5,7 +5,7 @@ open Godot
 module LevelGroups=
     [<Literal>]
     let PlayerGroup= "Player"
-    
+
     [<Literal>]
     let EnemyGroup= "Enemy"
 
@@ -125,9 +125,12 @@ module MathUtils =
 module GDUtils =
     open Godot
 
-    let getRandomInRange min max = 
+    let getRandomInRange min max =
         let rand = new RandomNumberGenerator()
         rand.RandfRange(min, max)
+
+    let getRandomPosNegOne() =
+        getRandomInRange -1.0f -1.0f
 
     let loadTexture name =
         GD.Load<Texture>("res://Art/" + name + ".png")
