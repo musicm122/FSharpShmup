@@ -19,6 +19,7 @@
 		<Compile Include="EnemyFs.fs" />
 		<Compile Include="PlayerCameraFs.fs" />
 		<Compile Include="PlayerFs.fs" />
+		<Compile Include="Enemy2Fs.fs" />
 		<Compile Include="AnxietyFs.fs" />
 		<Compile Include="MainFs.fs" />
 		<None Include="Script.fsx" />
