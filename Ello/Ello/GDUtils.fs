@@ -5,7 +5,7 @@ open Godot
 module LevelGroups=
     [<Literal>]
     let PlayerGroup= "Player"
-    
+
     [<Literal>]
     let EnemyGroup= "Enemy"
 
@@ -112,6 +112,7 @@ module MoveDirectionUtils =
         | MoveDirection.Right -> Vector2.Right
 
 module MathUtils =
+
     let clamp (min:float) (max:float) (value:float) =
         let currentValue = (float32)value
         let min = (float32)min
@@ -122,12 +123,20 @@ module MathUtils =
     let clampMinZero max value =
         clamp 0.0 max value
 
+    let Lerp (v1:Vector2) (v2:Vector2) (by:float32) =
+        let retX = Mathf.Lerp(v1.x, v2.x, by);
+        let retY = Mathf.Lerp(v1.y, v2.y, by);
+        Vector2(retX, retY);
+
 module GDUtils =
     open Godot
 
-    let getRandomInRange min max = 
+    let getRandomInRange min max =
         let rand = new RandomNumberGenerator()
         rand.RandfRange(min, max)
+
+    let getRandomPosNegOne() =
+        getRandomInRange -1.0f -1.0f
 
     let loadTexture name =
         GD.Load<Texture>("res://Art/" + name + ".png")

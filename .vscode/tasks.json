@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "build",
-            "command": "X:/apps/Godot_v3.4-stable_mono_win64/Godot_v3.4-stable_mono_win64.exe",
+            "command": "X:/apps/Godot_v3.4.1-stable_mono_win64/Godot_v3.4.1-stable_mono_win64.exe",
             "type": "process",
             "args": [
                 "--build-solutions",
@@ -12,7 +12,13 @@
                 "--no-window",
                 "-q"
             ],
-            "problemMatcher": ["$msCompile"]
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
